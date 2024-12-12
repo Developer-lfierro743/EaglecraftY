@@ -18,6 +18,7 @@ dependencies {
     implementation 'org.lwjgl:lwjgl-opengl'
     implementation 'org.lwjgl:lwjgl-stb'
 
+    // Native dependencies for Linux ARM64
     runtimeOnly 'org.lwjgl:lwjgl::natives-linux-arm64'
     runtimeOnly 'org.lwjgl:lwjgl-glfw::natives-linux-arm64'
     runtimeOnly 'org.lwjgl:lwjgl-opengl::natives-linux-arm64'
@@ -44,5 +45,25 @@ tasks.withType(Jar) {
 task printVersion {
     doLast {
         println "Current version: $version"
+    }
+}
+
+// Configure source directories
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/main/java']
+        }
+        resources {
+            srcDirs = ['src/main/resources']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['src/test/java']
+        }
+        resources {
+            srcDirs = ['src/test/resources']
+        }
     }
 }
