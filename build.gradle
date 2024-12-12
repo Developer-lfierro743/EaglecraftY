@@ -67,3 +67,17 @@ sourceSets {
         }
     }
 }
+
+// Configure the JAR task
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'com.xojangstudios.eaglecrafty.Game' // Set the main class
+        )
+    }
+
+    // Include all dependencies in the JAR (optional, for standalone JAR)
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
