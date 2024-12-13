@@ -1,10 +1,10 @@
 # Welcome to Project EaglecraftY!
-Developed by Xojang Studios ZB
+## Developed by Xojang Studios ZB
 
-Our Question
+# Our Question?
 Do you feel that Minecraft has become stagnant, repetitive, or overly restrictive? Have you ever had ideas for Minecraft that Mojang never heard or rejected? If so, Project EaglecraftY is here to offer a fresh and innovative alternative.
 
-What is EaglecraftY?
+# What is EaglecraftY?
 EaglecraftY is a Minecraft-inspired game developed by Xojang Studios ZB. It aims to provide a new and exciting experience with a theme inspired by the Industrial Revolution. This means:
 
 All-new blocks, items, and mechanics designed around industrial and modern concepts.
@@ -77,9 +77,6 @@ DONT MAKE FAN PROJECTS.
 
 This is a public GitHub repository, but DO NOT DARE FORKING it without explicit permission.
 
-Copyright Notice
-Copyright © 2024-2025 Xojang Studios. All rights reserved.
-
 Join Us
 We are excited to bring EaglecraftY to life and challenge the status quo of Minecraft. Join us on this journey and help us create something truly unique and innovative.
 
@@ -93,3 +90,4 @@ Website: www.xojangstudios.com
 Disclaimer
 EaglecraftY is a non-commercial, independent project created by Xojang Studios ZB. It is not affiliated with Mojang, Microsoft, or any of their subsidiaries.
 
+Copyright © 2024-2025 Xojang Studios. All rights reserved.
