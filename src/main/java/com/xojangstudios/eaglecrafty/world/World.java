@@ -1,9 +1,9 @@
 package com.xojangstudios.eaglecrafty.world;
 
 public class World {
-    private static final int WORLD_WIDTH = 16;
+    public static final int WORLD_WIDTH = 16;
     private static final int WORLD_HEIGHT = 16;
-    private static final int WORLD_DEPTH = 16;
+    public static final int WORLD_DEPTH = 16;
 
     private final int[][][] blocks;
 
