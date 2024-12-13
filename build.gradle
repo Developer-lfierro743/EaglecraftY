@@ -72,7 +72,7 @@ sourceSets {
 jar {
     manifest {
         attributes(
-            'Main-Class': 'com.xojangstudios.eaglecrafty.Game' // Set the main class
+            'Main-Class': 'com.xojangstudios.eaglecrafty.core.Game' // Set the main class
         )
     }
 

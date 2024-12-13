@@ -1,10 +1,12 @@
+package com.xojangstudios.eaglecrafty.core;
+
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWKeyCallback;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 
 public class Game {
-    private long window;
+    private final long window;
     private final int width = 800;
     private final int height = 600;
     private final String title = "EaglecraftY";
