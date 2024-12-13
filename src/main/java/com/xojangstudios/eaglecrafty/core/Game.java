@@ -3,6 +3,7 @@ package com.xojangstudios.eaglecrafty.core;
 import com.xojangstudios.eaglecrafty.rendering.Renderer;
 import org.joml.Vector3f;
 import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWCursorPosCallback;
 import org.lwjgl.glfw.GLFWKeyCallback;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
@@ -15,6 +16,10 @@ public class Game {
 
     private Renderer renderer;
     private Camera camera;
+
+    private double lastMouseX = width / 2.0; // Center of the window
+    private double lastMouseY = height / 2.0; // Center of the window
+    private boolean firstMouse = true;
 
     public Game() {
         // Initialize GLFW
@@ -47,7 +52,6 @@ public class Game {
             public void invoke(long window, int key, int scancode, int action, int mods) {
                 if (action == GLFW.GLFW_PRESS || action == GLFW.GLFW_REPEAT) {
                     float moveSpeed = 0.1f;
-                    float rotateSpeed = 1.0f;
 
                     if (key == GLFW.GLFW_KEY_W) {
                         camera.moveForward(moveSpeed);
@@ -61,18 +65,41 @@ public class Game {
                         camera.moveUp(moveSpeed);
                     } else if (key == GLFW.GLFW_KEY_LEFT_SHIFT) {
                         camera.moveDown(moveSpeed);
-                    } else if (key == GLFW.GLFW_KEY_UP) {
-                        camera.rotate(-rotateSpeed, 0);
-                    } else if (key == GLFW.GLFW_KEY_DOWN) {
-                        camera.rotate(rotateSpeed, 0);
-                    } else if (key == GLFW.GLFW_KEY_LEFT) {
-                        camera.rotate(0, -rotateSpeed);
-                    } else if (key == GLFW.GLFW_KEY_RIGHT) {
-                        camera.rotate(0, rotateSpeed);
                     }
                 }
             }
         });
+
+        // Set up mouse input
+        GLFW.glfwSetCursorPosCallback(window, new GLFWCursorPosCallback() {
+            @Override
+            public void invoke(long window, double mouseX, double mouseY) {
+                if (firstMouse) {
+                    lastMouseX = mouseX;
+                    lastMouseY = mouseY;
+                    firstMouse = false;
+                }
+
+                // Calculate mouse movement delta
+                double deltaX = mouseX - lastMouseX;
+                double deltaY = lastMouseY - mouseY; // Reversed since y-coordinates go from bottom to top
+
+                // Update last mouse position
+                lastMouseX = mouseX;
+                lastMouseY = mouseY;
+
+                // Adjust sensitivity
+                float sensitivity = 0.1f;
+                deltaX *= sensitivity;
+                deltaY *= sensitivity;
+
+                // Update camera rotation
+                camera.rotate((float) deltaY, (float) deltaX);
+            }
+        });
+
+        // Hide and lock the mouse cursor to the center of the window
+        GLFW.glfwSetInputMode(window, GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_DISABLED);
     }
 
     public void run() {
