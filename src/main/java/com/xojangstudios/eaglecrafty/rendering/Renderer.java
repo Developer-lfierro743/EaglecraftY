@@ -157,3 +157,4 @@ public class Renderer {
             System.err.println("OpenGL error at " + location + ": " + error);
         }
     }
+}
