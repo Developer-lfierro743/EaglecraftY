@@ -54,4 +54,9 @@ public class Renderer {
         GL11.glVertex3f(x + a, y + b + 1, z + c);
         GL11.glEnd();
     }
+
+    public void init() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'init'");
+    }
 }
