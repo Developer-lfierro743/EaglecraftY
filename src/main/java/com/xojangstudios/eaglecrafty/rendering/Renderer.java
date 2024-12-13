@@ -141,9 +141,6 @@ public class Renderer {
         GL20.glVertexAttribPointer(0, 3, GL11.GL_FLOAT, false, 5 * 4, 0); // Vertex positions
         GL20.glVertexAttribPointer(1, 2, GL11.GL_FLOAT, false, 5 * 4, 3 * 4); // Texture coordinates
 
-        // Apply view and projection matrices (using shaders)
-        // TODO: Pass viewMatrix and projectionMatrix to the shader
-
         // Draw the block
         GL11.glDrawElements(GL11.GL_TRIANGLES, indices.length, GL11.GL_UNSIGNED_INT, 0);
 
