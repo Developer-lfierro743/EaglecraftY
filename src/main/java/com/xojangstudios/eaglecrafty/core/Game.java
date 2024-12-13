@@ -5,9 +5,9 @@ import org.lwjgl.opengl.GL11;
 
 public class Game {
     private long window;
-    private int width = 800;
-    private int height = 600;
-    private String title = "EaglecraftY";
+    private final int width = 800;
+    private final int height = 600;
+    private final String title = "EaglecraftY";
 
     public Game() {
         // Initialize GLFW
