@@ -84,7 +84,7 @@ jar {
 import org.gradle.internal.os.OperatingSystem
 
 switch (OperatingSystem.current()) {
-    case OperatingSystem.FREEBSD:
+    case OperatingSystem.FREE_BSD:
         project.ext.lwjglNatives = "natives-freebsd"
         def osArch = System.getProperty("os.arch")
         if (osArch.startsWith("arm") || osArch.startsWith("aarch64")) {
