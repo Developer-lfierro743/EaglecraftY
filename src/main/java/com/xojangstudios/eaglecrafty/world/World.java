@@ -24,4 +24,8 @@ public class World {
     public int getBlock(int x, int y, int z) {
         return blocks[x][y][z];
     }
+
+    public boolean isBlockSolid(int x, int y, int z) {
+        return blocks[x][y][z] == 1;
+    }
 }

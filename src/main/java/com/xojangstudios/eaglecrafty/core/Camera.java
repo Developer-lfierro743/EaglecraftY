@@ -18,19 +18,24 @@ public final class Camera {
     private final Matrix4f viewMatrix;
 
     // Field of view (in degrees)
-    private static final float FOV = 70.0f;
+    private float fov;
 
     // Aspect ratio (width / height)
-    private static final float ASPECT_RATIO = 800.0f / 600.0f;
+    private float aspectRatio;
 
     // Near and far clipping planes
     private static final float NEAR_PLANE = 0.1f;
     private static final float FAR_PLANE = 1000.0f;
 
-    public Camera(Vector3f position) {
+    // Movement speed
+    private float moveSpeed = 0.1f;
+
+    public Camera(Vector3f position, float fov, float aspectRatio) {
         this.position = position;
         this.pitch = 0.0f;
         this.yaw = 0.0f;
+        this.fov = fov;
+        this.aspectRatio = aspectRatio;
         this.projectionMatrix = new Matrix4f();
         this.viewMatrix = new Matrix4f();
         updateProjectionMatrix();
@@ -40,7 +45,7 @@ public final class Camera {
     // Update the projection matrix (perspective projection)
     private void updateProjectionMatrix() {
         projectionMatrix.identity();
-        projectionMatrix.perspective(FOV, ASPECT_RATIO, NEAR_PLANE, FAR_PLANE);
+        projectionMatrix.perspective(fov, aspectRatio, NEAR_PLANE, FAR_PLANE);
     }
 
     // Update the view matrix based on position and rotation
@@ -113,5 +118,27 @@ public final class Camera {
     // Get the camera position
     public Vector3f getPosition() {
         return position;
+    }
+
+    // Set the field of view
+    public void setFov(float fov) {
+        this.fov = fov;
+        updateProjectionMatrix();
+    }
+
+    // Set the aspect ratio
+    public void setAspectRatio(float aspectRatio) {
+        this.aspectRatio = aspectRatio;
+        updateProjectionMatrix();
+    }
+
+    // Set the movement speed
+    public void setMoveSpeed(float moveSpeed) {
+        this.moveSpeed = moveSpeed;
+    }
+
+    // Get the movement speed
+    public float getMoveSpeed() {
+        return moveSpeed;
     }
 }
