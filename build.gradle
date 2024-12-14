@@ -17,6 +17,12 @@ dependencies {
     implementation 'org.lwjgl:lwjgl-opengl:3.3.4'
     implementation 'org.lwjgl:lwjgl-stb:3.3.4'
 
+    // Native dependencies based on the detected OS
+    runtimeOnly 'org.lwjgl:lwjgl::natives-linux'
+    runtimeOnly 'org.lwjgl:lwjgl-glfw::natives-linux'
+    runtimeOnly 'org.lwjgl:lwjgl-opengl::natives-linux'
+    runtimeOnly 'org.lwjgl:lwjgl-stb::natives-linux'
+
     // JOML for math operations
     implementation 'org.joml:joml:1.10.5'
 
@@ -80,14 +86,6 @@ import org.gradle.internal.os.OperatingSystem
 switch (OperatingSystem.current()) {
     case OperatingSystem.FREE_BSD:
         project.ext.lwjglNatives = "natives-freebsd"
-        def osArch = System.getProperty("os.arch")
-        if (osArch.startsWith("arm") || osArch.startsWith("aarch64")) {
-            project.ext.lwjglNatives += osArch.contains("64") || osArch.startsWith("armv8") ? "-arm64" : "-arm32"
-        } else if (osArch.startsWith("ppc")) {
-            project.ext.lwjglNatives += "-ppc64le"
-        } else if (osArch.startsWith("riscv")) {
-            project.ext.lwjglNatives += "-riscv64"
-        }
         break
     case OperatingSystem.LINUX:
         project.ext.lwjglNatives = "natives-linux"
@@ -105,9 +103,7 @@ switch (OperatingSystem.current()) {
         break
     case OperatingSystem.WINDOWS:
         def osArch = System.getProperty("os.arch")
-        project.ext.lwjglNatives = osArch.contains("64")
-            ? "natives-windows${osArch.startsWith("aarch64") ? "-arm64" : ""}"
-            : "natives-windows-x86"
+        project.ext.lwjglNatives = osArch.contains("64") || osArch.startsWith("aarch64") ? "natives-windows-x86-64" : "natives-windows-x86"
         break
 }
 
@@ -117,21 +113,6 @@ dependencies {
     runtimeOnly "org.lwjgl:lwjgl-glfw:3.3.4:${project.ext.lwjglNatives}"
     runtimeOnly "org.lwjgl:lwjgl-opengl:3.3.4:${project.ext.lwjglNatives}"
     runtimeOnly "org.lwjgl:lwjgl-stb:3.3.4:${project.ext.lwjglNatives}"
-
-    // JOML for math operations
-    implementation 'org.joml:joml:1.10.5'
-
-    // Test dependencies
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.10.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.10.0'
-}
-
-test {
-    // LWJGL dependencies
-    testRuntimeOnly "org.lwjgl:lwjgl:3.3.4:${project.ext.lwjglNatives}"
-    testRuntimeOnly "org.lwjgl:lwjgl-glfw:3.3.4:${project.ext.lwjglNatives}"
-    testRuntimeOnly "org.lwjgl:lwjgl-opengl:3.3.4:${project.ext.lwjglNatives}"
-    testRuntimeOnly "org.lwjgl:lwjgl-stb:3.3.4:${project.ext.lwjglNatives}"
 
     // JOML for math operations
     implementation 'org.joml:joml:1.10.5'
