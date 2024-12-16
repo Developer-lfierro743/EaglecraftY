@@ -53,6 +53,11 @@ public class Game {
             System.exit(1);
         }
 
+        // Set GLFW window hints
+        GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MAJOR, 3);
+        GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MINOR, 3);
+        GLFW.glfwWindowHint(GLFW.GLFW_OPENGL_PROFILE, GLFW.GLFW_OPENGL_CORE_PROFILE);
+
         // Create a window
         window = GLFW.glfwCreateWindow(width, height, title, 0, 0);
         if (window == 0) {
@@ -63,7 +68,8 @@ public class Game {
         // Set up OpenGL
         GLFW.glfwMakeContextCurrent(window);
         GL.createCapabilities();
-        GL11.glClearColor(1.0f, 0.0f, 0.0f, 1.0f);
+        GL11.glClearColor(0.1f, 0.1f, 0.1f, 1.0f); // Set a dark background color
+        GL11.glEnable(GL11.GL_DEPTH_TEST); // Enable depth testing
 
         // Initialize the Renderer
         renderer = new Renderer();
