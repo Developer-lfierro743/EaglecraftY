@@ -1,12 +1,5 @@
 package com.xojangstudios.eaglecrafty.core;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.IntBuffer;
-import java.nio.charset.StandardCharsets;
-import java.util.stream.Collectors;
-
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
 import org.lwjgl.glfw.GLFW;
@@ -14,9 +7,6 @@ import org.lwjgl.glfw.GLFWCursorPosCallback;
 import org.lwjgl.glfw.GLFWKeyCallback;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL15;
-import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GL30;
 
 import com.xojangstudios.eaglecrafty.entities.Player;
 import com.xojangstudios.eaglecrafty.physics.Physics;
@@ -38,13 +28,6 @@ public class Game {
     private double lastMouseY = height / 2.0; // Center of the window
     private boolean firstMouse = true;
     private boolean mouseLocked = true; // Tracks whether the mouse is locked
-
-    private int crosshairVao;
-    private int crosshairVbo;
-    private int crosshairShaderProgram;
-
-    private float crosshairSize = 0.075f; // Default crosshair size (10% of screen height)
-    private final float crosshairThickness = 0.005f; // Thickness of the crosshair lines
 
     public Game() {
         // Initialize GLFW
@@ -140,111 +123,6 @@ public class Game {
 
         // Hide and lock the mouse cursor to the center of the window initially
         GLFW.glfwSetInputMode(window, GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_DISABLED);
-
-        // Initialize the crosshair
-        initCrosshair();
-    }
-
-    private void initCrosshair() {
-        // Create a simple crosshair using two quads
-        float[] crosshairVertices = generateCrosshairVertices();
-
-        // Generate VAO and VBO for the crosshair
-        crosshairVao = GL30.glGenVertexArrays();
-        GL30.glBindVertexArray(crosshairVao);
-
-        crosshairVbo = GL15.glGenBuffers();
-        GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, crosshairVbo);
-        GL15.glBufferData(GL15.GL_ARRAY_BUFFER, crosshairVertices, GL15.GL_STATIC_DRAW);
-
-        // Set vertex attribute pointers
-        GL20.glVertexAttribPointer(0, 3, GL11.GL_FLOAT, false, 0, 0);
-        GL20.glEnableVertexAttribArray(0);
-
-        // Unbind VAO
-        GL30.glBindVertexArray(0);
-
-        // Load crosshair shaders
-        crosshairShaderProgram = loadShaders("/shaders/crosshairVertexShader.glsl", "/shaders/crosshairFragmentShader.glsl");
-    }
-
-    private float[] generateCrosshairVertices() {
-        // Dynamically calculate crosshair size based on window size
-        IntBuffer widthBuffer = IntBuffer.allocate(1);
-        IntBuffer heightBuffer = IntBuffer.allocate(1);
-        GLFW.glfwGetWindowSize(window, widthBuffer, heightBuffer);
-        int windowWidth = widthBuffer.get(0);
-        int windowHeight = heightBuffer.get(0);
-
-        // Calculate crosshair size as 10% of the screen height
-        crosshairSize = 0.1f * (float) windowHeight / (float) windowWidth;
-
-        // Create the crosshair vertices
-        return new float[]{
-            // Horizontal line
-            -crosshairSize, -crosshairThickness, 0.0f, // Bottom-left
-            crosshairSize, -crosshairThickness, 0.0f,  // Bottom-right
-            crosshairSize, crosshairThickness, 0.0f,   // Top-right
-            -crosshairSize, crosshairThickness, 0.0f,  // Top-left
-
-            // Vertical line
-            -crosshairThickness, -crosshairSize, 0.0f, // Bottom-left
-            crosshairThickness, -crosshairSize, 0.0f,  // Bottom-right
-            crosshairThickness, crosshairSize, 0.0f,   // Top-right
-            -crosshairThickness, crosshairSize, 0.0f   // Top-left
-        };
-    }
-
-    private int loadShaders(String vertexShaderPath, String fragmentShaderPath) {
-        // Load vertex shader
-        String vertexShaderSource = loadShaderSource(vertexShaderPath);
-        int vertexShader = GL20.glCreateShader(GL20.GL_VERTEX_SHADER);
-        GL20.glShaderSource(vertexShader, vertexShaderSource);
-        GL20.glCompileShader(vertexShader);
-        checkShaderCompileStatus(vertexShader, "Vertex Shader");
-
-        // Load fragment shader
-        String fragmentShaderSource = loadShaderSource(fragmentShaderPath);
-        int fragmentShader = GL20.glCreateShader(GL20.GL_FRAGMENT_SHADER);
-        GL20.glShaderSource(fragmentShader, fragmentShaderSource);
-        GL20.glCompileShader(fragmentShader);
-        checkShaderCompileStatus(fragmentShader, "Fragment Shader");
-
-        // Create shader program
-        int shaderProgram = GL20.glCreateProgram();
-        GL20.glAttachShader(shaderProgram, vertexShader);
-        GL20.glAttachShader(shaderProgram, fragmentShader);
-        GL20.glLinkProgram(shaderProgram);
-        checkProgramLinkStatus(shaderProgram);
-
-        // Delete shaders after linking
-        GL20.glDeleteShader(vertexShader);
-        GL20.glDeleteShader(fragmentShader);
-
-        return shaderProgram;
-    }
-
-    private String loadShaderSource(String path) {
-        try (InputStream inputStream = getClass().getResourceAsStream(path);
-             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
-            return reader.lines().collect(Collectors.joining("\n"));
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to load shader: " + path, e);
-        }
-    }
-
-    private void checkShaderCompileStatus(int shader, String shaderType) {
-        if (GL20.glGetShaderi(shader, GL20.GL_COMPILE_STATUS) == GL11.GL_FALSE) {
-            String infoLog = GL20.glGetShaderInfoLog(shader);
-            throw new RuntimeException(shaderType + " compilation failed: " + infoLog);
-        }
-    }
-
-    private void checkProgramLinkStatus(int program) {
-        if (GL20.glGetProgrami(program, GL20.GL_LINK_STATUS) == GL11.GL_FALSE) {
-            String infoLog = GL20.glGetProgramInfoLog(program);
-            throw new RuntimeException("Shader program linking failed: " + infoLog);
-        }
     }
 
     public void run() {
@@ -262,9 +140,6 @@ public class Game {
             // Render the 3D scene
             renderer.render(viewMatrix, new Matrix4f().perspective(70.0f, (float) width / height, 0.1f, 1000.0f));
 
-            // Render the crosshair
-            renderCrosshair();
-
             // Swap buffers and poll events
             GLFW.glfwSwapBuffers(window);
             GLFW.glfwPollEvents();
@@ -272,26 +147,6 @@ public class Game {
 
         // Clean up
         GLFW.glfwTerminate();
-    }
-
-    private void renderCrosshair() {
-        // Disable depth testing for the crosshair
-        GL11.glDisable(GL11.GL_DEPTH_TEST);
-
-        // Use the crosshair shader program
-        GL20.glUseProgram(crosshairShaderProgram);
-
-        // Bind the crosshair VAO
-        GL30.glBindVertexArray(crosshairVao);
-
-        // Draw the crosshair
-        GL11.glDrawArrays(GL11.GL_TRIANGLES, 0, 12);
-
-        // Unbind the VAO
-        GL30.glBindVertexArray(0);
-
-        // Re-enable depth testing
-        GL11.glEnable(GL11.GL_DEPTH_TEST);
     }
 
     public static void main(String[] args) {
