@@ -5,8 +5,10 @@ import org.joml.Vector3f;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWCursorPosCallback;
 import org.lwjgl.glfw.GLFWKeyCallback;
+import org.lwjgl.glfw.GLFWMouseButtonCallback;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
+
 
 import com.xojangstudios.eaglecrafty.entities.Player;
 import com.xojangstudios.eaglecrafty.physics.Physics;
@@ -69,54 +71,25 @@ public class Game {
         // Initialize the Player
         player = new Player(new Vector3f(0, 5, 5), 0.1f, 0.1f, physics);
 
-        // Detect if running on a touch device (e.g., Termux/Proot-Distro with Termux-X11)
-        isTouchDevice = detectTouchDevice();
+        // Detect if running on a touch device (e.g., Termux/Proot-Distro)
+        String osName = System.getProperty("os.name").toLowerCase();
+        if (osName.contains("android")) {
+            isTouchDevice = true;
+        }
 
         // Set up input handling
         if (isTouchDevice) {
             setupTouchControls();
         } else {
-            setupKeyboardMouseControls();
+            setupKeyboardControls();
         }
+
+        // Hide and lock the mouse cursor to the center of the window initially
+        GLFW.glfwSetInputMode(window, GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_DISABLED);
     }
 
-    private boolean detectTouchDevice() {
-        // Placeholder for touch device detection logic
-        // You can use environment variables or other methods to detect Termux/Proot-Distro
-        return System.getenv("TERMUX_X11") != null;
-    }
-
-    private void setupTouchControls() {
-        // Set up touch controls (e.g., virtual joystick, swipe gestures)
-        System.out.println("Touch controls enabled");
-
-        // Example: Map touch events to player actions
-        GLFW.glfwSetCursorPosCallback(window, new GLFWCursorPosCallback() {
-            @Override
-            public void invoke(long window, double mouseX, double mouseY) {
-                // Handle touch events (e.g., swipe gestures for rotation)
-                if (firstMouse) {
-                    lastMouseX = mouseX;
-                    lastMouseY = mouseY;
-                    firstMouse = false;
-                }
-
-                // Calculate touch movement delta
-                double deltaX = mouseX - lastMouseX;
-                double deltaY = lastMouseY - mouseY; // Reversed since y-coordinates go from bottom to top
-
-                // Update last touch position
-                lastMouseX = mouseX;
-                lastMouseY = mouseY;
-
-                // Update player rotation based on touch movement
-                player.rotate((float) deltaY, (float) deltaX);
-            }
-        });
-    }
-
-    private void setupKeyboardMouseControls() {
-        // Set up keyboard and mouse controls
+    private void setupKeyboardControls() {
+        // Set up keyboard input
         GLFW.glfwSetKeyCallback(window, new GLFWKeyCallback() {
             @Override
             public void invoke(long window, int key, int scancode, int action, int mods) {
@@ -169,9 +142,44 @@ public class Game {
                 }
             }
         });
+    }
 
-        // Hide and lock the mouse cursor to the center of the window initially
-        GLFW.glfwSetInputMode(window, GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_DISABLED);
+    private void setupTouchControls() {
+        // Set up touch input
+        GLFW.glfwSetMouseButtonCallback(window, new GLFWMouseButtonCallback() {
+            @Override
+            public void invoke(long window, int button, int action, int mods) {
+                if (action == GLFW.GLFW_PRESS) {
+                    // Handle touch input (e.g., tap to move forward)
+                    if (button == GLFW.GLFW_MOUSE_BUTTON_LEFT) {
+                        player.moveForward(player.getMoveSpeed());
+                    }
+                }
+            }
+        });
+
+        // Set up touch movement (swipe gestures)
+        GLFW.glfwSetCursorPosCallback(window, new GLFWCursorPosCallback() {
+            @Override
+            public void invoke(long window, double mouseX, double mouseY) {
+                if (firstMouse) {
+                    lastMouseX = mouseX;
+                    lastMouseY = mouseY;
+                    firstMouse = false;
+                }
+
+                // Calculate touch movement delta
+                double deltaX = mouseX - lastMouseX;
+                double deltaY = lastMouseY - mouseY; // Reversed since y-coordinates go from bottom to top
+
+                // Update last touch position
+                lastMouseX = mouseX;
+                lastMouseY = mouseY;
+
+                // Handle touch movement (e.g., swipe to rotate)
+                player.rotate((float) deltaY * 0.1f, (float) deltaX * 0.1f);
+            }
+        });
     }
 
     public void run() {
