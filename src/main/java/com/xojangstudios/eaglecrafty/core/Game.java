@@ -1,29 +1,18 @@
 package com.xojangstudios.eaglecrafty.core;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.stream.Collectors;
-
 import org.joml.Matrix4f;
 import org.joml.Vector3f;
-import org.joml.Vector3fc;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.glfw.GLFWCursorPosCallback;
 import org.lwjgl.glfw.GLFWKeyCallback;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL15;
-import org.lwjgl.opengl.GL20;
-import org.lwjgl.opengl.GL30;
 
 import com.xojangstudios.eaglecrafty.entities.Player;
 import com.xojangstudios.eaglecrafty.physics.Physics;
 import com.xojangstudios.eaglecrafty.rendering.Renderer;
 import com.xojangstudios.eaglecrafty.world.World;
 
-@SuppressWarnings("unused")
 public class Game {
     private final long window;
     private final int width = 800;
@@ -40,11 +29,7 @@ public class Game {
     private boolean firstMouse = true;
     private boolean mouseLocked = true; // Tracks whether the mouse is locked
 
-    private int blockOutlineVao;
-    private int blockOutlineVbo;
-    private int blockOutlineShaderProgram;
-
-    private Vector3f blockHighlightPosition = new Vector3f(); // Position of the block being highlighted
+    private boolean isTouchDevice = false; // Flag to detect if running on a touch device
 
     public Game() {
         // Initialize GLFW
@@ -84,7 +69,54 @@ public class Game {
         // Initialize the Player
         player = new Player(new Vector3f(0, 5, 5), 0.1f, 0.1f, physics);
 
+        // Detect if running on a touch device (e.g., Termux/Proot-Distro with Termux-X11)
+        isTouchDevice = detectTouchDevice();
+
         // Set up input handling
+        if (isTouchDevice) {
+            setupTouchControls();
+        } else {
+            setupKeyboardMouseControls();
+        }
+    }
+
+    private boolean detectTouchDevice() {
+        // Placeholder for touch device detection logic
+        // You can use environment variables or other methods to detect Termux/Proot-Distro
+        return System.getenv("TERMUX_X11") != null;
+    }
+
+    private void setupTouchControls() {
+        // Set up touch controls (e.g., virtual joystick, swipe gestures)
+        System.out.println("Touch controls enabled");
+
+        // Example: Map touch events to player actions
+        GLFW.glfwSetCursorPosCallback(window, new GLFWCursorPosCallback() {
+            @Override
+            public void invoke(long window, double mouseX, double mouseY) {
+                // Handle touch events (e.g., swipe gestures for rotation)
+                if (firstMouse) {
+                    lastMouseX = mouseX;
+                    lastMouseY = mouseY;
+                    firstMouse = false;
+                }
+
+                // Calculate touch movement delta
+                double deltaX = mouseX - lastMouseX;
+                double deltaY = lastMouseY - mouseY; // Reversed since y-coordinates go from bottom to top
+
+                // Update last touch position
+                lastMouseX = mouseX;
+                lastMouseY = mouseY;
+
+                // Update player rotation based on touch movement
+                player.rotate((float) deltaY, (float) deltaX);
+            }
+        });
+    }
+
+    private void setupKeyboardMouseControls() {
+        // Set up keyboard and mouse controls
         GLFW.glfwSetKeyCallback(window, new GLFWKeyCallback() {
             @Override
             public void invoke(long window, int key, int scancode, int action, int mods) {
@@ -140,101 +172,6 @@ public class Game {
 
         // Hide and lock the mouse cursor to the center of the window initially
         GLFW.glfwSetInputMode(window, GLFW.GLFW_CURSOR, GLFW.GLFW_CURSOR_DISABLED);
-
-        // Initialize the block outline
-        initBlockOutline();
-    }
-
-    private void initBlockOutline() {
-        // Create a wireframe cube for the block outline
-        float[] blockOutlineVertices = generateBlockOutlineVertices();
-
-        // Generate VAO and VBO for the block outline
-        blockOutlineVao = GL30.glGenVertexArrays();
-        GL30.glBindVertexArray(blockOutlineVao);
-
-        blockOutlineVbo = GL15.glGenBuffers();
-        GL15.glBindBuffer(GL15.GL_ARRAY_BUFFER, blockOutlineVbo);
-        GL15.glBufferData(GL15.GL_ARRAY_BUFFER, blockOutlineVertices, GL15.GL_STATIC_DRAW);
-
-        // Set vertex attribute pointers
-        GL20.glVertexAttribPointer(0, 3, GL11.GL_FLOAT, false, 0, 0);
-        GL20.glEnableVertexAttribArray(0);
-
-        // Unbind VAO
-        GL30.glBindVertexArray(0);
-
-        // Load block outline shaders
-        blockOutlineShaderProgram = loadShaders("/shaders/blockOutlineVertexShader.glsl", "/shaders/blockOutlineFragmentShader.glsl");
-    }
-
-    private float[] generateBlockOutlineVertices() {
-        // Vertices for a wireframe cube (1x1x1)
-        return new float[]{
-            // Front face
-            -0.5f, -0.5f, 0.5f,
-            0.5f, -0.5f, 0.5f,
-            0.5f, 0.5f, 0.5f,
-            -0.5f, 0.5f, 0.5f,
-
-            // Back face
-            -0.5f, -0.5f, -0.5f,
-            0.5f, -0.5f, -0.5f,
-            0.5f, 0.5f, -0.5f,
-            -0.5f, 0.5f, -0.5f
-        };
-    }
-
-    private int loadShaders(String vertexShaderPath, String fragmentShaderPath) {
-        // Load vertex shader
-        String vertexShaderSource = loadShaderSource(vertexShaderPath);
-        int vertexShader = GL20.glCreateShader(GL20.GL_VERTEX_SHADER);
-        GL20.glShaderSource(vertexShader, vertexShaderSource);
-        GL20.glCompileShader(vertexShader);
-        checkShaderCompileStatus(vertexShader, "Vertex Shader");
-
-        // Load fragment shader
-        String fragmentShaderSource = loadShaderSource(fragmentShaderPath);
-        int fragmentShader = GL20.glCreateShader(GL20.GL_FRAGMENT_SHADER);
-        GL20.glShaderSource(fragmentShader, fragmentShaderSource);
-        GL20.glCompileShader(fragmentShader);
-        checkShaderCompileStatus(fragmentShader, "Fragment Shader");
-
-        // Create shader program
-        int shaderProgram = GL20.glCreateProgram();
-        GL20.glAttachShader(shaderProgram, vertexShader);
-        GL20.glAttachShader(shaderProgram, fragmentShader);
-        GL20.glLinkProgram(shaderProgram);
-        checkProgramLinkStatus(shaderProgram);
-
-        // Delete shaders after linking
-        GL20.glDeleteShader(vertexShader);
-        GL20.glDeleteShader(fragmentShader);
-
-        return shaderProgram;
-    }
-
-    private String loadShaderSource(String path) {
-        try (InputStream inputStream = getClass().getResourceAsStream(path);
-             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
-            return reader.lines().collect(Collectors.joining("\n"));
-        } catch (Exception e) {
-            throw new RuntimeException("Failed to load shader: " + path, e);
-        }
-    }
-
-    private void checkShaderCompileStatus(int shader, String shaderType) {
-        if (GL20.glGetShaderi(shader, GL20.GL_COMPILE_STATUS) == GL11.GL_FALSE) {
-            String infoLog = GL20.glGetShaderInfoLog(shader);
-            throw new RuntimeException(shaderType + " compilation failed: " + infoLog);
-        }
-    }
-
-    private void checkProgramLinkStatus(int program) {
-        if (GL20.glGetProgrami(program, GL20.GL_LINK_STATUS) == GL11.GL_FALSE) {
-            String infoLog = GL20.glGetProgramInfoLog(program);
-            throw new RuntimeException("Shader program linking failed: " + infoLog);
-        }
     }
 
     public void run() {
@@ -252,9 +189,6 @@ public class Game {
             // Render the 3D scene
             renderer.render(viewMatrix, new Matrix4f().perspective(70.0f, (float) width / height, 0.1f, 1000.0f));
 
-            // Highlight the block the player is looking at
-            highlightBlock(viewMatrix);
-
             // Swap buffers and poll events
             GLFW.glfwSwapBuffers(window);
             GLFW.glfwPollEvents();
@@ -262,51 +196,6 @@ public class Game {
 
         // Clean up
         GLFW.glfwTerminate();
-    }
-
-    private void highlightBlock(Matrix4f viewMatrix) {
-        // Perform raycasting to find the block the player is looking at
-        Vector3f blockPosition = raycastToBlock();
-
-        if (blockPosition != null) {
-            // Render the block outline at the block's position
-            renderBlockOutline(blockPosition, viewMatrix);
-        }
-    }
-
-    private Vector3f raycastToBlock() {
-        // Perform raycasting logic here to determine the block the player is looking at
-        // This is a placeholder implementation
-        return new Vector3f(0, 0, 0); // Replace with actual raycasting logic
-    }
-
-    private void renderBlockOutline(Vector3f blockPosition, Matrix4f viewMatrix) {
-        // Disable depth testing for the block outline
-        GL11.glDisable(GL11.GL_DEPTH_TEST);
-
-        // Use the block outline shader program
-        GL20.glUseProgram(blockOutlineShaderProgram);
-
-        // Bind the block outline VAO
-        GL30.glBindVertexArray(blockOutlineVao);
-
-        // Set the model matrix for the block outline
-        Matrix4f modelMatrix = new Matrix4f().identity();
-        modelMatrix.translate(blockPosition);
-
-        // Set the MVP matrix (Model-View-Projection)
-        Matrix4f mvpMatrix = new Matrix4f(viewMatrix).mul(modelMatrix);
-        int mvpLocation = GL20.glGetUniformLocation(blockOutlineShaderProgram, "mvpMatrix");
-        GL20.glUniformMatrix4fv(mvpLocation, false, mvpMatrix.get(new float[16]));
-
-        // Draw the block outline
-        GL11.glDrawArrays(GL11.GL_LINE_LOOP, 0, 8);
-
-        // Unbind the VAO
-        GL30.glBindVertexArray(0);
-
-        // Re-enable depth testing
-        GL11.glEnable(GL11.GL_DEPTH_TEST);
     }
 
     public static void main(String[] args) {
