@@ -73,7 +73,8 @@ Think Twice Before Infringing
 "Don't infringe on our copyrights. Think again."
 
 YOU ARE NOT US (Xojang Studios ZB).
-DONT MAKE FAN PROJECTS.
+
+DON'T MAKE FAN PROJECTS.
 
 This is a public GitHub repository, but DO NOT DARE FORKING it without explicit permission.
 
