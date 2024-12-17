@@ -74,8 +74,8 @@ Respects creativity: No hardcoded world borders or restrictive mechanics.
 Challenges Mojang: We are not afraid to innovate and push the boundaries of what a Minecraft-inspired game can be.
 
 ## Warning: Legal and Copyright Notice
-## NOT AN OFFICIAL MINECRAFT PRODUCT/SERVICE/EVENT/etc.
-## NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.
+> NOT AN OFFICIAL MINECRAFT PRODUCT/SERVICE/EVENT/etc.
+> NOT APPROVED BY OR ASSOCIATED WITH MOJANG OR MICROSOFT.
 
 We are an independent video game entity and take our copyrights very seriously. If you are caught infringing on our intellectual property, we will not hesitate to take legal action, including DMCA takedown requests.
 
