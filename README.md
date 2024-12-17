@@ -46,19 +46,20 @@ The current theme of Minecraft is Medieval, which is outdated and limiting. Eagl
  - and more!
 
 **New Mechanics**:
+
 Red Dragons (tameable and ridable)
 
 Friendly Withers
 
 A thirst bar
 
-New Dimensions
+**New Dimensions**:
 A Sky Dimension and Farlands for endless exploration.
 
-No Build Height Limit
+**No Build Height Limit**
 Build as high as you want without restrictions.
 
-Our Vision
+**Our Vision**:
 We aim to create a game that:
 
 Empowers the community: With an open-source modding API, players can create and share mods freely.
@@ -78,16 +79,16 @@ We are an independent video game entity and take our copyrights very seriously. 
 # Our List of Infringements
 If you are caught by us, the following actions will be considered infringement:
 
-Forking this repository without permission.
+1.Forking this repository without permission.
 
-Copying or redistributing our code or assets.
+2.Copying or redistributing our code or assets.
 
-Creating fan projects or derivatives based on EaglecraftY.
+3.Creating fan projects or derivatives based on EaglecraftY.
 
-Using our branding or intellectual property without authorization.
+4.Using our branding or intellectual property without authorization.
 
 Think Twice Before Infringing
-"Don't infringe on our copyrights. Think again."
+> "Don't infringe on our copyrights. Think again."
 
 YOU ARE NOT US (Xojang Studios ZB).
 
