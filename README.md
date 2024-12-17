@@ -45,19 +45,7 @@ The current theme of Minecraft is Medieval, which is outdated and limiting. Eagl
  - Nether reactor core
  - and more!
 
-
-
-Gears
-
-Ruby ore
-
-Crying Obsidian
-
-Nether Reactor Core
-
-And more!
-
-New Mechanics
+**New Mechanics**:
 Red Dragons (tameable and ridable)
 
 Friendly Withers
