@@ -22,17 +22,17 @@ A unique world format (EWF) for saving and loading chunks, ensuring compatibilit
 # Why We Are Making This Project
 We have several reasons for creating EaglecraftY:
 
-Restrictive EULA: The Minecraft EULA has become overly restrictive for servers, modders, and content creators.
+1.Restrictive EULA: The Minecraft EULA has become overly restrictive for servers, modders, and content creators.
 
-Hidden Clauses: Mojang has been accused of hiding clauses and exploiting its community.
+2.Hidden Clauses: Mojang has been accused of hiding clauses and exploiting its community.
 
-Bad Moderation: Poor moderation practices have led to exploitation and inappropriate content in the Minecraft community.
+3.Bad Moderation: Poor moderation practices have led to exploitation and inappropriate content in the Minecraft community.
 
-Microsoft Mishandling: Microsoft's acquisition of Mojang has been criticized for anti-trust issues, mishandling, and microtransactions.
+4.Microsoft Mishandling: Microsoft's acquisition of Mojang has been criticized for anti-trust issues, mishandling, and microtransactions.
 
-Legal Issues: Mojang and Microsoft have been accused of breaking EU consumer laws, particularly in Sweden and the European Union.
+5.Legal Issues: Mojang and Microsoft have been accused of breaking EU consumer laws, particularly in Sweden and the European Union.
 
-Community Frustration: Many players feel that Minecraft has become stagnant, repetitive, and overly commercialized.
+6.Community Frustration: Many players feel that Minecraft has become stagnant, repetitive, and overly commercialized.
 
 
 # Our Theme: Industrial Revolution
