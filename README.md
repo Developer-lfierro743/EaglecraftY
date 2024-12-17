@@ -112,4 +112,7 @@ Website: www.xojangstudios.com
 ## Disclaimer
 ## EaglecraftY is a non-commercial, independent project created by Xojang Studios ZB. It is not affiliated with Mojang, Microsoft, or any of their subsidiaries.
 
+> [!NOTE]
+> This is a Very early stage of the game of EaglecraftY it may have bugs,crashes, glitches,etc just report that to us we can take the rest 
+
 Copyright © 2024-2025 Xojang Studios. All rights reserved.
