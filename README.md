@@ -38,7 +38,15 @@ We have several reasons for creating EaglecraftY:
 # Our Theme: Industrial Revolution
 The current theme of Minecraft is Medieval, which is outdated and limiting. EaglecraftY introduces a modern Industrial Revolution theme, featuring:
 
-New Blocks
+**New Blocks**:
+ - Gears
+ - ruby ore
+ - crying obsidian
+ - Nether reactor core
+ - and more!
+
+
+
 Gears
 
 Ruby ore
