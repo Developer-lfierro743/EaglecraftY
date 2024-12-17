@@ -97,7 +97,8 @@ DON'T MAKE FAN PROJECTS.
 This is a public GitHub repository, but DO NOT DARE FORKING it without explicit permission.
 
 # Join Us
-We are excited to bring EaglecraftY to life and challenge the status quo of Minecraft. Join us on this journey and help us create something truly unique and innovative.
+> We are excited to bring EaglecraftY to life and challenge the status quo of Minecraft.
+> Join us on this journey and help us create something truly unique and innovative.
 
 # Contact Us
 For inquiries, collaborations, or support, please contact us at:
