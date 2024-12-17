@@ -113,4 +113,4 @@ Website: www.xojangstudios.com
 > [!NOTE]
 > This is a Very early stage of the game of EaglecraftY it may have bugs,crashes, glitches,etc just report that to us we can take the rest 
 
-Copyright © 2024-2025 Xojang Studios. All rights reserved.
+**Copyright © 2024-2025 Xojang Studios. All rights reserved.**
