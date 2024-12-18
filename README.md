@@ -1,7 +1,10 @@
 # Welcome to Project EaglecraftY
 > Developed by Xojang Studios ZB
+
 ![License](https://img.shields.io/badge/License-proprietary-red)
+
 ![Version](https://img.shields.io/badge/Version-v0.0-blue)
+
 [![Discord](https://img.shields.io/badge/Discord-Join%20Our%20Server-7289DA?logo=discord)](https://discord.gg/acN93WBRC5)
 
 # Our Question?
@@ -10,13 +13,13 @@ Do you feel that Minecraft has become stagnant, repetitive, or overly restrictiv
 # What is EaglecraftY?
 EaglecraftY is a Minecraft-inspired game developed by Xojang Studios ZB. It aims to provide a new and exciting experience with a theme inspired by the Industrial Revolution. This means:
 
-All-new blocks, items, and mechanics designed around industrial and modern concepts.
+1. All-new blocks, items, and mechanics designed around industrial and modern concepts.
 
-A modular codebase for easy expansion and customization.
+2. A modular codebase for easy expansion and customization.
 
-A performance-focused engine that delivers +400 FPS without the need for optimization mods.
+3. A performance-focused engine that delivers +400 FPS without the need for optimization mods.
 
-A unique world format (EWF) for saving and loading chunks, ensuring compatibility and efficiency.
+4. A unique world format (EWF) for saving and loading chunks, ensuring compatibility and efficiency.
 
 # Why We Are Making This Project
 We have several reasons for creating EaglecraftY:
@@ -31,7 +34,7 @@ We have several reasons for creating EaglecraftY:
 
 5.Legal Issues: Mojang and Microsoft have been accused of breaking EU consumer laws, particularly in Sweden and the European Union.
 
-Community Frustration: Many players feel that Minecraft has become stagnant, repetitive, and overly commercialized.
+6.Community Frustration: Many players feel that Minecraft has become stagnant, repetitive, and overly commercialized.
 
 
 # Our Theme: Industrial Revolution
@@ -102,9 +105,9 @@ For inquiries, collaborations, or support, please contact us at:
 
 Email: XojangStudiozZB@mail.com
 
-Website: www.xojangstudios.com
+Website: Comming soon!
 
 ## Disclaimer
-## EaglecraftY is a non-commercial, independent project created by Xojang Studios ZB. It is not affiliated with Mojang, Microsoft, or any of their subsidiaries.
+> EaglecraftY is a non-commercial, independent project created by Xojang Studios ZB. It is not affiliated with Mojang, Microsoft, or any of their subsidiaries.
 
-Copyright © 2024-2025 Xojang Studios. All rights reserved.
+**Copyright © 2024-2025 Xojang Studios. All rights reserved.**
