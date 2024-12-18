@@ -32,49 +32,8 @@ We have several reasons for creating EaglecraftY:
 
 5.Legal Issues: Mojang and Microsoft have been accused of breaking EU consumer laws, particularly in Sweden and the European Union.
 
-6.Community Frustration: Many players feel that Minecraft has become stagnant, repetitive, and overly commercialized.
-# Why We Are Making This Project
-We have several reasons for creating EaglecraftY:
+Community Frustration: Many players feel that Minecraft has become stagnant, repetitive, and overly commercialized.
 
-1.Restrictive EULA: The Minecraft EULA has become overly restrictive for servers, modders, and content creators.
-
-2.Hidden Clauses: Mojang has been accused of hiding clauses and exploiting its community.
-
-3.Bad Moderation: Poor moderation practices have led to exploitation and inappropriate content in the Minecraft community.
-
-4.Microsoft Mishandling: Microsoft's acquisition of Mojang has been criticized for anti-trust issues, mishandling, and microtransactions.
-
-5.Legal Issues: Mojang and Microsoft have been accused of breaking EU consumer laws, particularly in Sweden and the European Union.
-
-6.Community Frustration: Many players feel that Minecraft has become stagnant, repetitive, and overly commercialized.
-# Why We Are Making This Project
-We have several reasons for creating EaglecraftY:
-
-1.Restrictive EULA: The Minecraft EULA has become overly restrictive for servers, modders, and content creators.
-
-2.Hidden Clauses: Mojang has been accused of hiding clauses and exploiting its community.
-
-3.Bad Moderation: Poor moderation practices have led to exploitation and inappropriate content in the Minecraft community.
-
-4.Microsoft Mishandling: Microsoft's acquisition of Mojang has been criticized for anti-trust issues, mishandling, and microtransactions.
-
-5.Legal Issues: Mojang and Microsoft have been accused of breaking EU consumer laws, particularly in Sweden and the European Union.
-
-6.Community Frustration: Many players feel that Minecraft has become stagnant, repetitive, and overly commercialized.
-# Why We Are Making This Project
-We have several reasons for creating EaglecraftY:
-
-1.Restrictive EULA: The Minecraft EULA has become overly restrictive for servers, modders, and content creators.
-
-2.Hidden Clauses: Mojang has been accused of hiding clauses and exploiting its community.
-
-3.Bad Moderation: Poor moderation practices have led to exploitation and inappropriate content in the Minecraft community.
-
-4.Microsoft Mishandling: Microsoft's acquisition of Mojang has been criticized for anti-trust issues, mishandling, and microtransactions.
-
-5.Legal Issues: Mojang and Microsoft have been accused of breaking EU consumer laws, particularly in Sweden and the European Union.
-
-6.Community Frustration: Many players feel that Minecraft has become stagnant, repetitive, and overly commercialized.
 
 # Our Theme: Industrial Revolution
 The current theme of Minecraft is Medieval, which is outdated and limiting. 
@@ -87,7 +46,7 @@ The current theme of Minecraft is Medieval, which is outdated and limiting.
  - Nether reactor core
  - and more!
 
-**New Mechanics**:
+New Mechanics
 Red Dragons (tameable and ridable)
 Friendly Withers
 A thirst bar
@@ -147,9 +106,6 @@ Email: XojangStudiozZB@mail.com
 Website: www.xojangstudios.com
 
 ## Disclaimer
-> EaglecraftY is a non-commercial,independent project created by Xojang Studios ZB. It is not affiliated with Mojang, Microsoft, or any of their subsidiaries.
+## EaglecraftY is a non-commercial, independent project created by Xojang Studios ZB. It is not affiliated with Mojang, Microsoft, or any of their subsidiaries.
 
-> [!NOTE]
-> This is a Very early stage of the game of EaglecraftY it may have bugs,crashes, glitches,etc just report that to us we can take the rest 
-
-**Copyright © 2024-2025 Xojang Studios. All rights reserved.**
+Copyright © 2024-2025 Xojang Studios. All rights reserved.
