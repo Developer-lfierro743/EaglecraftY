@@ -1,9 +1,8 @@
 # Welcome to Project EaglecraftY
+## Developed by Xojang Studios ZB
 ![License](https://img.shields.io/badge/License-proprietary-red)
 ![Version](https://img.shields.io/badge/Version-v0.0-blue)
 [![Discord](https://img.shields.io/badge/Discord-Join%20Our%20Server-7289DA?logo=discord)](https://discord.gg/acN93WBRC5)
-
-## Developed by Xojang Studios ZB
 
 # Our Question?
 Do you feel that Minecraft has become stagnant, repetitive, or overly restrictive? Have you ever had ideas for Minecraft that Mojang never heard or rejected? If so, Project EaglecraftY is here to offer a fresh and innovative alternative.
