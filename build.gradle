@@ -7,7 +7,7 @@ version '0.0-PreDevelopment'
 
 repositories {
     mavenCentral()
-     maven { url 'https://jitpack.io' }
+    maven { url "https://repo.spongepowered.org/repository/maven-public/"}
 }
 
 // LWJGL Version
@@ -51,7 +51,7 @@ dependencies {
     implementation "org.lwjgl:lwjgl-glfw"
     implementation "org.lwjgl:lwjgl-stb" 
     implementation "org.joml:joml:1.10.7"
-    implementation 'com.github.Auburns:FastNoiseLite:1.1.1'
+    implementation "org.spongepowered:noise:2.0.0-SNAPSHOT"
     
 
     runtimeOnly "org.lwjgl:lwjgl::$lwjglNatives"
