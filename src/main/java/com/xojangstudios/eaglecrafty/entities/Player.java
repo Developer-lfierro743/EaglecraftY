@@ -3,6 +3,7 @@ package com.xojangstudios.eaglecrafty.entities;
 import org.joml.Vector3f;
 import com.xojangstudios.eaglecrafty.core.*;
 
+
 public class Player {
 
     // Player position
