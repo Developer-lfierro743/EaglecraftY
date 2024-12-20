@@ -1,8 +1,8 @@
+package com.xojangstudios.eaglecrafty.ui;
+
 import java.util.ArrayList;
 import java.util.List;
-import com.xojangstudios.eaglecrafty.items.*;
-
-package com.xojangstudios.eaglecrafty.ui;
+import com.xojangstudios.eaglecrafty.items.Item;
 
 
 public class InventoryUI {

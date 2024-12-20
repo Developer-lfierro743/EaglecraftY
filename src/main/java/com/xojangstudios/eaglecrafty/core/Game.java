@@ -1,7 +1,8 @@
 package com.xojangstudios.eaglecrafty.core;
 
 import com.xojangstudios.eaglecrafty.entities.Player;
-import com.xojangstudios.eaglecrafty.ui.MainMenu;
+import com.xojangstudios.eaglecrafty.world.World;
+
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
@@ -74,5 +75,25 @@ public class Game {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public void setInputHandler(InputHandler inputHandler2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setInputHandler'");
+    }
+
+    public void setRenderer(Renderer renderer2) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setRenderer'");
+    }
+
+    public void setWorld(World world) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setWorld'");
+    }
+
+    public void start() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'start'");
     }
 }

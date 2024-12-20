@@ -6,6 +6,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Renderer {
+    private Map<String, Block> blocks;
+
+    public Renderer() {
+        blocks = new HashMap<>();
+        initializeBlocks();
+    }
+
     public void init() {
         GL.createCapabilities();
         GL11.glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
@@ -14,14 +21,6 @@ public class Renderer {
     public void render() {
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
         // Add your rendering logic here
-    }
-}
-public class Renderer {
-    private Map<String, Block> blocks;
-
-    public Renderer() {
-        blocks = new HashMap<>();
-        initializeBlocks();
     }
 
     private void initializeBlocks() {
@@ -41,11 +40,6 @@ public class Renderer {
 
     public Block getBlock(String name) {
         return blocks.get(name);
-    }
-
-    public void render() {
-        GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
-        // Add your rendering logic here
     }
 
     public static class Block {
