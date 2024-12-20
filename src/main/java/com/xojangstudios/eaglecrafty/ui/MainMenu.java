@@ -1,5 +1,7 @@
 package com.xojangstudios.eaglecrafty.ui;
 
+import com.xojangstudios.eaglecrafty.core.Game;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -42,7 +44,11 @@ public class MainMenu extends JFrame {
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Start game logic here
+                new Thread(() -> {
+                    Game game = new Game();
+                    game.init();
+                    game.run();
+                }).start();
                 System.out.println("Start Game button clicked");
             }
         });

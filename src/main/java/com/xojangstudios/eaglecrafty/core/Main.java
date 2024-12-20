@@ -5,21 +5,19 @@ import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.glfw.Callbacks;
 
-
 public class Main {
+    public static void main(String[] args) {
+        Game game = new Game();
+        game.init();
+        game.run();
+    }
+}
+
+class Game {
 
     private long window;
 
-    public static void main(String[] args) {
-        new Main().run();
-    }
-
-    private void updateGameLogic() {
-        // Implement game logic update here
-    }
-
     public void run() {
-        init();
         loop();
 
         Callbacks.glfwFreeCallbacks(window);
@@ -29,7 +27,7 @@ public class Main {
         GLFW.glfwTerminate();
     }
 
-    private void init() {
+    public void init() {
         // Initialize GLFW
         if (!GLFW.glfwInit()) {
             throw new IllegalStateException("Unable to initialize GLFW");
@@ -87,13 +85,17 @@ public class Main {
             // Handle input
             handleInput();
         }
-    
-        private void updateCamera() {
-            // Implement camera update logic here
-        }
+    }
 
-        private void handleInput() {
-            // Implement input handling logic here
-        }
+    private void updateGameLogic() {
+        // Implement game logic update here
+    }
+
+    private void updateCamera() {
+        // Implement camera update logic here
+    }
+
+    private void handleInput() {
+        // Implement input handling logic here
     }
 }
