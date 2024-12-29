@@ -7,7 +7,7 @@ version '0.0-PreDevelopment'
 
 repositories {
     mavenCentral()
-    maven { url "https://repo.spongepowered.org/repository/maven-public/"}
+    maven { url "https://repo.spongepowered.org/repository/maven-public/" }
 }
 
 // LWJGL Version
@@ -49,16 +49,15 @@ dependencies {
     implementation "org.lwjgl:lwjgl"
     implementation "org.lwjgl:lwjgl-opengl"
     implementation "org.lwjgl:lwjgl-glfw"
-    implementation "org.lwjgl:lwjgl-stb" 
+    implementation "org.lwjgl:lwjgl-stb"
     implementation "org.joml:joml:1.10.7"
     implementation "org.spongepowered:noise:2.0.0-SNAPSHOT"
     implementation 'org.slick2d:slick2d-core:1.0.2'
-    
 
-    runtimeOnly "org.lwjgl:lwjgl::$lwjglNatives"
-    runtimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
-    runtimeOnly "org.lwjgl:lwjgl-glfw::$lwjglNatives"
-    runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl::${lwjglNatives}"
+    runtimeOnly "org.lwjgl:lwjgl-opengl::${lwjglNatives}"
+    runtimeOnly "org.lwjgl:lwjgl-glfw::${lwjglNatives}"
+    runtimeOnly "org.lwjgl:lwjgl-stb::${lwjglNatives}"
 }
 
 // Java Version Compatibility
@@ -75,7 +74,7 @@ tasks.withType(AbstractArchiveTask) {
 // Build and Run Configuration
 jar {
     manifest {
-        attributes 'Main-Class': 'com.xojangstudios.eaglecrafty.core.Main'
+        attributes 'Main-Class': 'com.xojangstudios.eaglecrafty.core.Game' // Ensure this matches your main class
     }
     from {
         configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
@@ -89,7 +88,7 @@ defaultTasks 'build'
 sourceSets {
     main {
         java {
-            srcDirs = ['src/main/java'] // Ensure this matches your directory structure
+            srcDirs = ['src/main/java']
         }
     }
 }

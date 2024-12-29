@@ -1,33 +1,59 @@
 package com.xojangstudios.eaglecrafty.engine;
 
 import org.lwjgl.glfw.GLFW;
+import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.opengl.GL;
+import org.lwjgl.system.MemoryUtil;
 
 public class Window {
-
     private static long windowHandle;
-        
-            public Window(){
-                if (!GLFW.glfwInit()) {
-                    System.err.println("Failed to initialize GLFW.");
-                    System.exit(-1);
-                }
-        
-                windowHandle = GLFW.glfwCreateWindow(800, 600, "EaglecraftY", 0, 0);
-                if (windowHandle == 0) {
-                    System.err.println("Failed to create GLFW window.");
-                    System.exit(-1);
-                }
-        
-                GLFW.glfwMakeContextCurrent(windowHandle);
-                GL.createCapabilities();
-            }
-    
-            public static boolean ShouldClose() {
-                return GLFW.glfwWindowShouldClose(windowHandle);
+
+    public static void init() {
+        // Set up an error callback
+        GLFWErrorCallback.createPrint(System.err).set();
+
+        // Initialize GLFW
+        if (!GLFW.glfwInit()) {
+            throw new IllegalStateException("Unable to initialize GLFW");
         }
 
-        public static void swapBuffers() {
-            GLFW.glfwSwapBuffers(windowHandle);
+        // Configure GLFW
+        GLFW.glfwDefaultWindowHints();
+        GLFW.glfwWindowHint(GLFW.GLFW_VISIBLE, GLFW.GLFW_FALSE);
+        GLFW.glfwWindowHint(GLFW.GLFW_RESIZABLE, GLFW.GLFW_TRUE);
+
+        // Create the window
+        windowHandle = GLFW.glfwCreateWindow(800, 600, "EaglecraftY", MemoryUtil.NULL, MemoryUtil.NULL);
+        if (windowHandle == MemoryUtil.NULL) {
+            throw new RuntimeException("Failed to create the GLFW window");
+        }
+
+        // Make the OpenGL context current
+        GLFW.glfwMakeContextCurrent(windowHandle);
+        // Enable v-sync
+        GLFW.glfwSwapInterval(1);
+        // Make the window visible
+        GLFW.glfwShowWindow(windowHandle);
+
+        // Initialize OpenGL capabilities
+        GL.createCapabilities();
+    }
+
+    public static boolean shouldClose() {
+        return GLFW.glfwWindowShouldClose(windowHandle);
+    }
+
+    public static void swapBuffers() {
+        GLFW.glfwSwapBuffers(windowHandle);
+    }
+
+    public static void pollEvents() {
+        GLFW.glfwPollEvents();
+    }
+
+    public static void terminate() {
+        GLFW.glfwDestroyWindow(windowHandle);
+        GLFW.glfwTerminate();
+        GLFW.glfwSetErrorCallback(null).free();
     }
 }

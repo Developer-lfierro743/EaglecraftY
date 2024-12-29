@@ -6,15 +6,15 @@ import com.xojangstudios.eaglecrafty.engine.Window;
 import com.xojangstudios.eaglecrafty.world.World;
 import com.xojangstudios.eaglecrafty.assets.AssetManager;
 
-public class Game{
+public class Game {
     private Renderer renderer;
     private InputHandler inputHandler;
     private World world;
     @SuppressWarnings("unused")
     private AssetManager assetManager;
 
-    public Game(){
-        //initialize the components
+    public Game() {
+        // Initialize the components
         renderer = new Renderer();
         inputHandler = new InputHandler();
         world = new World();
@@ -22,17 +22,21 @@ public class Game{
     }
 
     public void start() {
-        //game loop
-        while(!Window.ShouldClose()){
+        Window.init();
+        // Game loop
+        while (!Window.shouldClose()) {
             inputHandler.update();
             world.update();
             renderer.render(world);
             Window.swapBuffers();
+            Window.pollEvents();
         }
+        Window.terminate();
     }
-public static void main(String[] args) {
-    // Create the game Instance and start it
-    Game game = new Game();
-    game.start();
- }
+
+    public static void main(String[] args) {
+        // Create the game instance and start it
+        Game game = new Game();
+        game.start();
+    }
 }
