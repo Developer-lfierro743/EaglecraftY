@@ -18,7 +18,7 @@ public class Game{
         renderer = new Renderer();
         inputHandler = new InputHandler();
         world = new World();
-        assetsManager = new AssetManager();
+        assetManager = new AssetManager();
     }
 
     public void start() {
