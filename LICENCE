@@ -1,98 +1,45 @@
-EaglercraftY License Agreement
-Version 1.0
-Effective Date: December 20, 2024
-Owner: Xojang Studios ZB
+# License Agreement
 
-1. Introduction
-This license governs the use, distribution, and modification of EaglercraftY, a hybrid game developed by Xojang Studios ZB. The core game is closed-source, while the modding API is open-source. By using, modifying, or distributing any part of EaglercraftY, you agree to the terms and conditions outlined in this license.
+## 1. Introduction
 
-2. Definitions
-Core Game: The closed-source portion of EaglercraftY, including all game code, assets, and intellectual property.
+This License Agreement ("Agreement") is made between you ("user") and Xojang Studios ZB ("Company"). By using the software, you agree to be bound by the terms and conditions of this Agreement.
 
-Modding API: The open-source toolkit provided by Xojang Studios ZB to enable modders to create modifications (mods) for the game.
+## 2. Grant of License
 
-Mod: Any content created using the Modding API, including but not limited to custom maps, textures, gameplay mechanics, and plugins.
+### 2.1 Closed-Source License
+The game "EaglecraftY" is provided to you as a closed-source software. You are granted a non-exclusive, non-transferable, and limited license to use the game for personal and non-commercial purposes only. You may not modify, distribute, or reverse engineer the game.
 
-User: Any individual or entity that uses, modifies, or distributes EaglercraftY or its components.
+### 2.2 Open-Source Modding API
+The modding API of "EaglecraftY" is provided under an open-source license. You are free to use, modify, and distribute the modding API in accordance with the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
-3. License for the Core Game
-3.1 Ownership
-The Core Game, including all code, assets, and intellectual property, is owned by Xojang Studios ZB and is protected under international copyright laws.
+## 3. Ownership
 
-3.2 Permitted Use
-You may purchase, download, and play the Core Game for personal use.
+The game "EaglecraftY" and all associated intellectual property rights are owned by Xojang Studios ZB. This Agreement does not grant you any ownership rights to the game or its content.
 
-You may not reverse engineer, decompile, or disassemble the Core Game.
+## 4. Restrictions
 
-You may not copy, distribute, or create derivative works based on the Core Game without prior written permission from Xojang Studios ZB.
+You may not:
+- Use the game for commercial purposes.
+- Distribute the game or any of its components.
+- Reverse engineer, decompile, or disassemble the game.
+- Create derivative works based on the game, except as permitted by the open-source license for the modding API.
 
-3.3 Fair Use
-Xojang Studios ZB is committed to providing a fair and enjoyable gaming experience. Any in-game purchases or monetization options will not provide unfair advantages.
+## 5. Termination
 
-3.4 Liability
-Xojang Studios ZB is not liable for any damages, including but not limited to loss of data, hardware damage, or personal injury, arising from the use of the Core Game.
+This Agreement is effective until terminated. Your rights under this Agreement will terminate automatically without notice if you fail to comply with any term(s) of this Agreement. Upon termination, you must cease all use of the game and destroy all copies of the game in your possession.
 
-4. License for the Modding API
-4.1 Open-Source License
-The Modding API is licensed under the MIT License, which grants you the following rights:
+## 6. Disclaimer of Warranties
 
-Permission to use, modify, and distribute the Modding API for any purpose, including commercial use.
+The game is provided "as is" without warranty of any kind. Xojang Studios ZB disclaims all warranties, whether express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, and non-infringement.
 
-Permission to create mods using the Modding API.
+## 7. Limitation of Liability
 
-4.2 Attribution
-You must include a copy of the MIT License and give appropriate credit to Xojang Studios ZB when distributing or using the Modding API.
+In no event shall Xojang Studios ZB be liable for any special, incidental, indirect, or consequential damages whatsoever arising out of the use of or inability to use the game.
 
-4.3 Fair Use of Mods
-Mods created using the Modding API must not:
+## 8. Governing Law
 
-Provide unfair advantages or violate the Core Game's fairness principles.
+This Agreement shall be governed by and construed in accordance with the laws of the jurisdiction in which Xojang Studios ZB is located, without regard to its conflict of law principles.
 
-Contain grooming mods, inappropriate content, or any content that violates applicable laws.
+## 9. Contact Information
 
-Infringe on Xojang Studios ZB's trademarks or intellectual property.
-
-4.4 Moderation and Review
-Xojang Studios ZB reserves the right to review, approve, restrict, or reject mods submitted by users.
-
-Mods may be categorized as:
-
-Safe: Approved for all players.
-
-Restricted: Restricted to mature audiences (e.g., mild violence or language).
-
-Rejected: Violates guidelines and will not be published.
-
-4.5 No Warranty
-The Modding API is provided "as is," without warranty of any kind, express or implied.
-
-5. Trademark and Branding
-The name EaglercraftY and all associated logos, trademarks, and branding are owned by Xojang Studios ZB.
-
-You may not use these trademarks without prior written permission.
-
-Mods created using the Modding API must not use names, logos, or branding that could be confused with EaglercraftY or Xojang Studios ZB.
-
-6. Compliance with Laws
-This license must comply with all applicable laws, including but not limited to copyright laws, trademark laws, and consumer protection laws.
-
-Users are responsible for ensuring that their use of EaglercraftY and its components complies with local laws.
-
-7. Termination
-Xojang Studios ZB reserves the right to terminate this license for any user who violates its terms and conditions.
-
-Termination may result in the removal of access to the Core Game, Modding API, or any associated services.
-
-8. Amendments
-Xojang Studios ZB may update this license at any time. Users will be notified of any changes, and continued use of EaglercraftY constitutes acceptance of the updated terms.
-
-9. Contact Information
-For questions or concerns regarding this license, please contact:
-Xojang Studios ZB
-Email: XojangStudiozZB@mail.com
-Website: www.xojangstudioszb.com
-
-10. Governing Law
-This license is governed by the laws of the State of Iowa, USA. Any disputes arising from this license will be resolved in the courts of the State of Iowa.
-
-End of License Agreement
+If you have any questions about this Agreement, please contact Xojang Studios ZB at [XojangStudiozZB@mail.com].
