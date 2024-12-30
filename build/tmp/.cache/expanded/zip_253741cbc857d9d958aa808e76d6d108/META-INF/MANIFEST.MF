@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Multi-Release: true
+Specification-Title: noise
+Specification-Vendor: SpongePowered
+Specification-Version: 2.0.0-SNAPSHOT
+Implementation-Title: noise
+Implementation-Vendor: SpongePowered
+Implementation-Version: 2.0.0-SNAPSHOT
+Git-Commit: a38141b0a139213cbf6b1a2a10ec571c690fc4bf
+Git-Branch: master
+

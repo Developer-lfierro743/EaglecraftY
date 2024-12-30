@@ -1,0 +1,17 @@
+JarIndex-Version: 1.0
+
+lwjgl-stb-natives-linux-arm64.jar
+META-INF
+META-INF/linux
+META-INF/linux/arm64
+META-INF/linux/arm64/org
+META-INF/linux/arm64/org/lwjgl
+META-INF/linux/arm64/org/lwjgl/stb
+META-INF/versions
+META-INF/versions/11
+linux
+linux/arm64
+linux/arm64/org
+linux/arm64/org/lwjgl
+linux/arm64/org/lwjgl/stb
+
