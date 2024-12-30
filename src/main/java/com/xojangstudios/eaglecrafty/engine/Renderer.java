@@ -1,9 +1,13 @@
 package com.xojangstudios.eaglecrafty.engine;
 
-import com.xojangstudios.eaglecrafty.world.World;
+import org.lwjgl.PointerBuffer;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.system.MemoryStack;
+import org.lwjgl.system.MemoryUtil;
+
+import com.xojangstudios.eaglecrafty.world.World;
 
 public class Renderer {
 
@@ -32,12 +36,22 @@ public class Renderer {
 
         GL.createCapabilities(); // Initialize OpenGL capabilities
 
+        // Check for GLFW errors
+        try (MemoryStack stack = MemoryStack.stackPush()) {
+            PointerBuffer buffer = stack.mallocPointer(1);
+            int errorCode = GLFW.glfwGetError(buffer);
+            if (errorCode != GLFW.GLFW_NO_ERROR) {
+                String description = MemoryUtil.memUTF8(buffer.get(0));
+                throw new IllegalStateException("GLFW error: " + description);
+            }
+        }
+
         // Set the clear color to black
-        org.lwjgl.opengl.GL11.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        GL11.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
         // Main loop for rendering
         while (!GLFW.glfwWindowShouldClose(window)) {
-            GL11.glClear(org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT); // Clear the screen
+            GL11.glClear(GL11.GL_COLOR_BUFFER_BIT); // Clear the screen
 
             render(new World()); // Render the world (containing the cube)
 

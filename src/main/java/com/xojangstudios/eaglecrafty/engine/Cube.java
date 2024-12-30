@@ -1,17 +1,22 @@
 package com.xojangstudios.eaglecrafty.engine;
 
-import org.lwjgl.BufferUtils;
 import java.nio.FloatBuffer;
+
+import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL30;
 
 public class Cube {
 
-    private final int vaoId;
-    private final int vboId;
-    private final int vertexCount;
+    private int vaoId;
+    private int vboId;
+    private int vertexCount;
 
     public Cube() {
+        // Initialization will be done in the init method
+    }
+
+    public void init() {
         // Define the cube vertices
         float[] vertices = {
             // Front face
