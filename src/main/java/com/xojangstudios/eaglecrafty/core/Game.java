@@ -7,11 +7,11 @@ import com.xojangstudios.eaglecrafty.world.World;
 import com.xojangstudios.eaglecrafty.assets.AssetManager;
 
 public class Game {
-    private Renderer renderer;
-    private InputHandler inputHandler;
-    private World world;
+    private final Renderer renderer;
+    private final InputHandler inputHandler;
+    private final World world;
     @SuppressWarnings("unused")
-    private AssetManager assetManager;
+    private final AssetManager assetManager;
 
     public Game() {
         // Initialize the components
