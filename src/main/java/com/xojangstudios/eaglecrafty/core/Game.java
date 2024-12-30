@@ -1,8 +1,8 @@
 package com.xojangstudios.eaglecrafty.core;
 
 import com.xojangstudios.eaglecrafty.assets.AssetManager;
-import com.xojangstudios.eaglecrafty.engine.Renderer;
 import com.xojangstudios.eaglecrafty.engine.Window;
+import com.xojangstudios.eaglecrafty.engine.Renderer;
 import com.xojangstudios.eaglecrafty.input.InputHandler;
 import com.xojangstudios.eaglecrafty.world.World;
 
@@ -31,6 +31,7 @@ public class Game {
             Window.swapBuffers();
             Window.pollEvents();
         }
+        renderer.cleanup();
         Window.terminate();
     }
 

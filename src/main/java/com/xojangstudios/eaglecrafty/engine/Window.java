@@ -1,50 +1,32 @@
 package com.xojangstudios.eaglecrafty.engine;
 
 import org.lwjgl.glfw.GLFW;
-import org.lwjgl.glfw.GLFWErrorCallback;
-import org.lwjgl.opengl.GL;
-import org.lwjgl.system.MemoryUtil;
 
 public class Window {
-    private static long windowHandle;
+    private static long window;
 
     public static void init() {
-        // Set up an error callback
-        GLFWErrorCallback.createPrint(System.err).set();
-
-        // Initialize GLFW
         if (!GLFW.glfwInit()) {
-            throw new IllegalStateException("Unable to initialize GLFW");
+            throw new IllegalStateException("Failed to initialize GLFW");
         }
 
-        // Configure GLFW
-        GLFW.glfwDefaultWindowHints();
-        GLFW.glfwWindowHint(GLFW.GLFW_VISIBLE, GLFW.GLFW_FALSE);
-        GLFW.glfwWindowHint(GLFW.GLFW_RESIZABLE, GLFW.GLFW_TRUE);
-
-        // Create the window
-        windowHandle = GLFW.glfwCreateWindow(800, 600, "EaglecraftY", MemoryUtil.NULL, MemoryUtil.NULL);
-        if (windowHandle == MemoryUtil.NULL) {
-            throw new RuntimeException("Failed to create the GLFW window");
+        // Create a windowed mode window and its OpenGL context
+        window = GLFW.glfwCreateWindow(800, 600, "EaglecraftY", 0, 0);
+        if (window == 0) {
+            throw new RuntimeException("Failed to create GLFW window");
         }
 
-        // Make the OpenGL context current
-        GLFW.glfwMakeContextCurrent(windowHandle);
-        // Enable v-sync
-        GLFW.glfwSwapInterval(1);
-        // Make the window visible
-        GLFW.glfwShowWindow(windowHandle);
-
-        // Initialize OpenGL capabilities
-        GL.createCapabilities();
+        GLFW.glfwMakeContextCurrent(window);
+        GLFW.glfwSwapInterval(1); // Enable vsync
+        GLFW.glfwShowWindow(window);
     }
 
     public static boolean shouldClose() {
-        return GLFW.glfwWindowShouldClose(windowHandle);
+        return GLFW.glfwWindowShouldClose(window);
     }
 
     public static void swapBuffers() {
-        GLFW.glfwSwapBuffers(windowHandle);
+        GLFW.glfwSwapBuffers(window);
     }
 
     public static void pollEvents() {
@@ -52,8 +34,10 @@ public class Window {
     }
 
     public static void terminate() {
-        GLFW.glfwDestroyWindow(windowHandle);
+        if (window != 0) {
+            GLFW.glfwDestroyWindow(window);
+            window = 0; // Mark the window as destroyed
+        }
         GLFW.glfwTerminate();
-        GLFW.glfwSetErrorCallback(null).free();
     }
 }
