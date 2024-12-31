@@ -21,14 +21,15 @@ switch (OperatingSystem.current()) {
         project.ext.lwjglNatives = "natives-freebsd"
         break
     case OperatingSystem.LINUX:
-        project.ext.lwjglNatives = "natives-linux"
         def osArch = System.getProperty("os.arch")
         if (osArch.startsWith("arm") || osArch.startsWith("aarch64")) {
-            project.ext.lwjglNatives += osArch.contains("64") || osArch.startsWith("armv8") ? "-arm64" : "-arm32"
+            project.ext.lwjglNatives = "natives-linux-arm64"
         } else if (osArch.startsWith("ppc")) {
-            project.ext.lwjglNatives += "-ppc64le"
+            project.ext.lwjglNatives = "natives-linux-ppc64le"
         } else if (osArch.startsWith("riscv")) {
-            project.ext.lwjglNatives += "-riscv64"
+            project.ext.lwjglNatives = "natives-linux-riscv64"
+        } else {
+            project.ext.lwjglNatives = "natives-linux"
         }
         break
     case OperatingSystem.MAC_OS:
@@ -47,17 +48,17 @@ dependencies {
     implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
 
     implementation "org.lwjgl:lwjgl"
-    implementation "org.lwjgl:lwjgl-opengl"
     implementation "org.lwjgl:lwjgl-glfw"
+    implementation "org.lwjgl:lwjgl-opengl"
     implementation "org.lwjgl:lwjgl-stb"
     implementation "org.joml:joml:1.10.7"
     implementation "org.spongepowered:noise:2.0.0-SNAPSHOT"
     implementation 'org.slick2d:slick2d-core:1.0.2'
 
-    runtimeOnly "org.lwjgl:lwjgl::${lwjglNatives}"
-    runtimeOnly "org.lwjgl:lwjgl-opengl::${lwjglNatives}"
-    runtimeOnly "org.lwjgl:lwjgl-glfw::${lwjglNatives}"
-    runtimeOnly "org.lwjgl:lwjgl-stb::${lwjglNatives}"
+    runtimeOnly "org.lwjgl:lwjgl::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-glfw::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"
 }
 
 // Java Version Compatibility

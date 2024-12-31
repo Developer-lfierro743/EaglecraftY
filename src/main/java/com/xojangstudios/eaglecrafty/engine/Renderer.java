@@ -1,93 +1,129 @@
 package com.xojangstudios.eaglecrafty.engine;
 
-import org.lwjgl.PointerBuffer;
-import org.lwjgl.glfw.GLFW;
+import java.io.IOException;
+
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.system.MemoryStack;
+import org.lwjgl.opengl.GL20;
+import org.lwjgl.opengl.GL30;
 import org.lwjgl.system.MemoryUtil;
-import org.joml.Matrix4f;
 
-import com.xojangstudios.eaglecrafty.world.World;
+import java.nio.FloatBuffer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Renderer {
-    private final Shader shader;
-    private final Cube cube;
-    private long window;
-    private final Matrix4f view;
-    private final Matrix4f projection;
+    private static final String SHADER_DIR = "/home/lfierro743/GameProjects/EaglecraftY/src/resources/shaders/";
 
-    public Renderer() {
-        // Initialize rendering context (OpenGL, shaders, etc.)
-        initOpenGL();
-        shader = new Shader(
-            "/home/lfierro743/GameProjects/EaglecraftY/src/resources/shaders/vertex_shader.glsl",
-            "/home/lfierro743/GameProjects/EaglecraftY/src/resources/shaders/fragment_shader.glsl"
+    private int shaderProgram;
+    private int vao;
+    private int vbo;
+
+    public void init() {
+        // Initialize OpenGL context
+        GL.createCapabilities();
+
+        // Load shaders
+        shaderProgram = createShaderProgram(
+                loadShader(SHADER_DIR + "vertex.glsl", GL20.GL_VERTEX_SHADER),
+                loadShader(SHADER_DIR + "fragment.glsl", GL20.GL_FRAGMENT_SHADER)
         );
-        cube = new Cube();
-        view = new Matrix4f().lookAt(0, 0, 3, 0, 0, 0, 0, 1, 0);
-        projection = new Matrix4f().perspective((float) Math.toRadians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
+
+        // Set up cube data
+        float[] vertices = {
+                // Front face
+                -0.5f, -0.5f,  0.5f,
+                 0.5f, -0.5f,  0.5f,
+                 0.5f,  0.5f,  0.5f,
+                -0.5f,  0.5f,  0.5f,
+                // Back face
+                -0.5f, -0.5f, -0.5f,
+                 0.5f, -0.5f, -0.5f,
+                 0.5f,  0.5f, -0.5f,
+                -0.5f,  0.5f, -0.5f
+        };
+
+        // Create VAO and VBO
+        vao = GL30.glGenVertexArrays();
+        vbo = GL30.glGenBuffers();
+
+        GL30.glBindVertexArray(vao);
+
+        FloatBuffer vertexBuffer = MemoryUtil.memAllocFloat(vertices.length);
+        vertexBuffer.put(vertices).flip();
+
+        GL30.glBindBuffer(GL30.GL_ARRAY_BUFFER, vbo);
+        GL30.glBufferData(GL30.GL_ARRAY_BUFFER, vertexBuffer, GL30.GL_STATIC_DRAW);
+
+        GL20.glVertexAttribPointer(0, 3, GL20.GL_FLOAT, false, 0, 0);
+        GL20.glEnableVertexAttribArray(0);
+
+        // Clean up
+        MemoryUtil.memFree(vertexBuffer);
+        GL30.glBindBuffer(GL30.GL_ARRAY_BUFFER, 0);
+        GL30.glBindVertexArray(0);
     }
 
-    private void initOpenGL() {
-        if (!GLFW.glfwInit()) {
-            throw new IllegalStateException("Failed to initialize GLFW");
-        }
-
-        // Create a windowed mode window and its OpenGL context
-        window = GLFW.glfwCreateWindow(800, 600, "EaglecraftY", 0, 0);
-        if (window == 0) {
-            throw new RuntimeException("Failed to create GLFW window");
-        }
-
-        GLFW.glfwMakeContextCurrent(window);
-        GLFW.glfwSwapInterval(1); // Enable vsync
-        GLFW.glfwShowWindow(window);
-
-        GL.createCapabilities(); // Initialize OpenGL capabilities
-
-        // Check for GLFW errors
-        try (MemoryStack stack = MemoryStack.stackPush()) {
-            PointerBuffer buffer = stack.mallocPointer(1);
-            int errorCode = GLFW.glfwGetError(buffer);
-            if (errorCode != GLFW.GLFW_NO_ERROR) {
-                String description = MemoryUtil.memUTF8(buffer.get(0));
-                throw new IllegalStateException("GLFW error: " + description);
-            }
-        }
-
-        // Set the clear color to black
-        GL11.glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-    }
-
-    public void render(World world) {
-        // Clear the screen
+    public void render() {
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 
         // Use the shader program
-        shader.use();
+        GL20.glUseProgram(shaderProgram);
 
-        // Set the view and projection matrices
-        shader.setMat4("view", view);
-        shader.setMat4("projection", projection);
+        // Bind the VAO
+        GL30.glBindVertexArray(vao);
 
-        // Render the world (e.g., call cube.render())
-        cube.render();
+        // Draw the cube
+        GL11.glDrawArrays(GL11.GL_QUADS, 0, 8);
 
-        // Swap the buffers
-        GLFW.glfwSwapBuffers(window);
+        // Unbind the VAO
+        GL30.glBindVertexArray(0);
 
-        // Poll for window events
-        GLFW.glfwPollEvents();
+        // Unuse the shader program
+        GL20.glUseProgram(0);
     }
 
     public void cleanup() {
-        // Destroy the window and terminate GLFW
-        if (window != 0) {
-            GLFW.glfwDestroyWindow(window);
-            window = 0; // Mark the window as destroyed
+        // Delete VAO and VBO
+        GL30.glDeleteVertexArrays(vao);
+        GL30.glDeleteBuffers(vbo);
+
+        // Delete shader program
+        GL20.glDeleteProgram(shaderProgram);
+    }
+
+    private int loadShader(String filePath, int type) {
+        try {
+            String source = new String(Files.readAllBytes(Paths.get(filePath)));
+            int shader = GL20.glCreateShader(type);
+            GL20.glShaderSource(shader, source);
+            GL20.glCompileShader(shader);
+
+            if (GL20.glGetShaderi(shader, GL20.GL_COMPILE_STATUS) == GL11.GL_FALSE) {
+                throw new RuntimeException("Shader compilation failed: " + GL20.glGetShaderInfoLog(shader));
+            }
+
+            return shader;
+        } catch (IOException | RuntimeException e) {
+            throw new RuntimeException("Failed to load shader: " + filePath, e);
         }
-        GLFW.glfwTerminate();
-        cube.cleanUp();
+    }
+
+    private int createShaderProgram(int vertexShader, int fragmentShader) {
+        int program = GL20.glCreateProgram();
+        GL20.glAttachShader(program, vertexShader);
+        GL20.glAttachShader(program, fragmentShader);
+        GL20.glLinkProgram(program);
+
+        if (GL20.glGetProgrami(program, GL20.GL_LINK_STATUS) == GL11.GL_FALSE) {
+            throw new RuntimeException("Shader program linking failed: " + GL20.glGetProgramInfoLog(program));
+        }
+
+        GL20.glDetachShader(program, vertexShader);
+        GL20.glDetachShader(program, fragmentShader);
+        GL20.glDeleteShader(vertexShader);
+        GL20.glDeleteShader(fragmentShader);
+
+        return program;
     }
 }
