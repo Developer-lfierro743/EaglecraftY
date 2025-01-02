@@ -1,7 +1,12 @@
 package com.xojangstudios.eaglecrafty.engine;
 
 import java.io.IOException;
+import java.nio.FloatBuffer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
+import org.joml.Matrix4f;
+import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL20;
@@ -9,10 +14,6 @@ import org.lwjgl.opengl.GL30;
 import org.lwjgl.system.MemoryUtil;
 
 import com.xojangstudios.eaglecrafty.world.World;
-
-import java.nio.FloatBuffer;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class Renderer {
     private static final String SHADER_DIR = "/home/lfierro743/GameProjects/EaglecraftY/src/resources/shaders/";
@@ -25,6 +26,9 @@ public class Renderer {
         // Initialize OpenGL context
         GL.createCapabilities();
 
+        // Enable depth testing
+        GL11.glEnable(GL11.GL_DEPTH_TEST);
+
         // Load shaders
         shaderProgram = createShaderProgram(
                 loadShader(SHADER_DIR + "vertex.glsl", GL20.GL_VERTEX_SHADER),
@@ -34,40 +38,23 @@ public class Renderer {
         // Set up cube data
         float[] vertices = {
             // Front face
-            -0.5f, -0.5f,  0.5f,
-             0.5f, -0.5f,  0.5f,
-             0.5f,  0.5f,  0.5f,
-            -0.5f,  0.5f,  0.5f,
-
+            -0.5f, -0.5f, 0.5f,  0.5f, -0.5f, 0.5f,  0.5f, 0.5f, 0.5f,
+            -0.5f, -0.5f, 0.5f,  0.5f, 0.5f, 0.5f,  -0.5f, 0.5f, 0.5f,
             // Back face
-            -0.5f, -0.5f, -0.5f,
-             0.5f, -0.5f, -0.5f,
-             0.5f,  0.5f, -0.5f,
-            -0.5f,  0.5f, -0.5f,
-
-            // Top face
-            -0.5f,  0.5f,  0.5f,
-             0.5f,  0.5f,  0.5f,
-             0.5f,  0.5f, -0.5f,
-            -0.5f,  0.5f, -0.5f,
-
-            // Bottom face
-            -0.5f, -0.5f,  0.5f,
-             0.5f, -0.5f,  0.5f,
-             0.5f, -0.5f, -0.5f,
-            -0.5f, -0.5f, -0.5f,
-
-            // Right face
-             0.5f, -0.5f,  0.5f,
-             0.5f, -0.5f, -0.5f,
-             0.5f,  0.5f, -0.5f,
-             0.5f,  0.5f,  0.5f,
-
+            -0.5f, -0.5f, -0.5f, 0.5f, -0.5f, -0.5f, 0.5f, 0.5f, -0.5f,
+            -0.5f, -0.5f, -0.5f, 0.5f, 0.5f, -0.5f, -0.5f, 0.5f, -0.5f,
             // Left face
-            -0.5f, -0.5f,  0.5f,
-            -0.5f, -0.5f, -0.5f,
-            -0.5f,  0.5f, -0.5f,
-            -0.5f,  0.5f,  0.5f
+            -0.5f, -0.5f, -0.5f, -0.5f, -0.5f, 0.5f, -0.5f, 0.5f, 0.5f,
+            -0.5f, -0.5f, -0.5f, -0.5f, 0.5f, 0.5f, -0.5f, 0.5f, -0.5f,
+            // Right face
+            0.5f, -0.5f, -0.5f,  0.5f, -0.5f, 0.5f,  0.5f, 0.5f, 0.5f,
+            0.5f, -0.5f, -0.5f,  0.5f, 0.5f, 0.5f,   0.5f, 0.5f, -0.5f,
+            // Top face
+            -0.5f, 0.5f, -0.5f,  -0.5f, 0.5f, 0.5f,  0.5f, 0.5f, 0.5f,
+            -0.5f, 0.5f, -0.5f,  0.5f, 0.5f, 0.5f,   0.5f, 0.5f, -0.5f,
+            // Bottom face
+            -0.5f, -0.5f, -0.5f, 0.5f, -0.5f, -0.5f, 0.5f, -0.5f, 0.5f,
+            -0.5f, -0.5f, -0.5f, 0.5f, -0.5f, 0.5f,  -0.5f, -0.5f, 0.5f
         };
 
         // Create VAO and VBO
@@ -91,17 +78,34 @@ public class Renderer {
         GL30.glBindVertexArray(0);
     }
 
-    public void render(World world) {
+    public void render(World world, int windowWidth, int windowHeight) {
+        // Clear the screen and depth buffer
         GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 
         // Use the shader program
         GL20.glUseProgram(shaderProgram);
 
+        // Set up the projection matrix
+        Matrix4f projectionMatrix = new Matrix4f()
+                .perspective((float) Math.toRadians(45), (float) windowWidth / windowHeight, 0.01f, 100.0f);
+        int projectionMatrixLocation = GL20.glGetUniformLocation(shaderProgram, "projectionMatrix");
+        FloatBuffer matrixBuffer = BufferUtils.createFloatBuffer(16);
+        projectionMatrix.get(matrixBuffer);
+        GL20.glUniformMatrix4fv(projectionMatrixLocation, false, matrixBuffer);
+
+        // Set up the view matrix (camera)
+        Matrix4f viewMatrix = new Matrix4f()
+                .lookAt(0, 0, 3, 0, 0, 0, 0, 1, 0); // Camera at (0, 0, 3), looking at (0, 0, 0), up vector (0, 1, 0)
+        int viewMatrixLocation = GL20.glGetUniformLocation(shaderProgram, "viewMatrix");
+        matrixBuffer = BufferUtils.createFloatBuffer(16);
+        viewMatrix.get(matrixBuffer);
+        GL20.glUniformMatrix4fv(viewMatrixLocation, false, matrixBuffer);
+
         // Bind the VAO
         GL30.glBindVertexArray(vao);
 
         // Draw the cube
-        GL11.glDrawArrays(GL11.GL_QUADS, 0, 24);
+        GL11.glDrawArrays(GL11.GL_TRIANGLES, 0, 36);
 
         // Unbind the VAO
         GL30.glBindVertexArray(0);

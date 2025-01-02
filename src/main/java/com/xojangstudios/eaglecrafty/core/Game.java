@@ -22,15 +22,30 @@ public class Game {
     }
 
     public void start() {
-        Window.init();
+        // Initialize the window and OpenGL context
+        Window.init(800, 600, "EaglecraftY");
+
+        // Initialize the renderer (after OpenGL context is created)
+        renderer.init();
+
         // Game loop
         while (!Window.shouldClose()) {
+            // Handle input
             inputHandler.update();
+
+            // Update the world
             world.update();
-            renderer.render(world);
+
+            // Render the world
+            renderer.render(world, Window.getWidth(), Window.getHeight());
+
+            // Swap buffers and poll events
             Window.swapBuffers();
             Window.pollEvents();
         }
+
+        // Clean up resources
+        renderer.cleanup();
         Window.terminate();
     }
 
