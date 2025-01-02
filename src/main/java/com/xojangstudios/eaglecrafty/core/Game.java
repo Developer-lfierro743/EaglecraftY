@@ -19,6 +19,12 @@ public class Game {
         inputHandler = new InputHandler();
         world = new World();
         assetManager = new AssetManager();
+
+        // Log build and version information
+        if (SharedConstants.ENABLE_LOGGING) {
+            System.out.println("Starting EaglecraftY - Version: " + SharedConstants.VERSION + " (Build: " + SharedConstants.VERSION_BUILD + ")");
+            System.out.println("Build Type: " + SharedConstants.BUILD_TYPE);
+        }
     }
 
     public void start() {
@@ -47,6 +53,11 @@ public class Game {
         // Clean up resources
         renderer.cleanup();
         Window.terminate();
+
+        // Log shutdown message
+        if (SharedConstants.ENABLE_LOGGING) {
+            System.out.println("EaglecraftY has been shut down.");
+        }
     }
 
     public static void main(String[] args) {
