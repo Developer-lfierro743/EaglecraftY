@@ -23,29 +23,54 @@ public class Cube {
     }
 
     public void init() {
-        // Define the cube vertices
+        // Define the cube vertices with colors
         float[] vertices = {
+            // Positions          // Colors
             // Front face
-            -0.5f, -0.5f, 0.5f,  0.5f, -0.5f, 0.5f,  0.5f, 0.5f, 0.5f,
-            -0.5f, -0.5f, 0.5f,  0.5f, 0.5f, 0.5f,  -0.5f, 0.5f, 0.5f,
+            -0.5f, -0.5f, 0.5f,  1.0f, 0.0f, 0.0f,
+             0.5f, -0.5f, 0.5f,  0.0f, 1.0f, 0.0f,
+             0.5f,  0.5f, 0.5f,  0.0f, 0.0f, 1.0f,
+            -0.5f, -0.5f, 0.5f,  1.0f, 0.0f, 0.0f,
+             0.5f,  0.5f, 0.5f,  0.0f, 0.0f, 1.0f,
+            -0.5f,  0.5f, 0.5f,  1.0f, 1.0f, 0.0f,
             // Back face
-            -0.5f, -0.5f, -0.5f, 0.5f, -0.5f, -0.5f, 0.5f, 0.5f, -0.5f,
-            -0.5f, -0.5f, -0.5f, 0.5f, 0.5f, -0.5f, -0.5f, 0.5f, -0.5f,
+            -0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 1.0f,
+             0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 1.0f,
+             0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f,
+            -0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 1.0f,
+             0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f,
+            -0.5f,  0.5f, -0.5f, 0.5f, 0.5f, 0.5f,
             // Left face
-            -0.5f, -0.5f, -0.5f, -0.5f, -0.5f, 0.5f, -0.5f, 0.5f, 0.5f,
-            -0.5f, -0.5f, -0.5f, -0.5f, 0.5f, 0.5f, -0.5f, 0.5f, -0.5f,
+            -0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 1.0f,
+            -0.5f, -0.5f,  0.5f, 1.0f, 0.0f, 0.0f,
+            -0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
+            -0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 1.0f,
+            -0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
+            -0.5f,  0.5f, -0.5f, 0.5f, 0.5f, 0.5f,
             // Right face
-            0.5f, -0.5f, -0.5f,  0.5f, -0.5f, 0.5f,  0.5f, 0.5f, 0.5f,
-            0.5f, -0.5f, -0.5f,  0.5f, 0.5f, 0.5f,   0.5f, 0.5f, -0.5f,
+             0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 1.0f,
+             0.5f, -0.5f,  0.5f, 0.0f, 1.0f, 0.0f,
+             0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
+             0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 1.0f,
+             0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
+             0.5f,  0.5f, -0.5f, 0.5f, 0.5f, 0.5f,
             // Top face
-            -0.5f, 0.5f, -0.5f,  -0.5f, 0.5f, 0.5f,  0.5f, 0.5f, 0.5f,
-            -0.5f, 0.5f, -0.5f,  0.5f, 0.5f, 0.5f,   0.5f, 0.5f, -0.5f,
+            -0.5f,  0.5f, -0.5f, 0.5f, 0.5f, 0.5f,
+            -0.5f,  0.5f,  0.5f, 1.0f, 0.0f, 0.0f,
+             0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
+            -0.5f,  0.5f, -0.5f, 0.5f, 0.5f, 0.5f,
+             0.5f,  0.5f,  0.5f, 0.0f, 0.0f, 1.0f,
+             0.5f,  0.5f, -0.5f, 0.5f, 0.5f, 0.5f,
             // Bottom face
-            -0.5f, -0.5f, -0.5f, 0.5f, -0.5f, -0.5f, 0.5f, -0.5f, 0.5f,
-            -0.5f, -0.5f, -0.5f, 0.5f, -0.5f, 0.5f,  -0.5f, -0.5f, 0.5f
+            -0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 1.0f,
+             0.5f, -0.5f, -0.5f, 1.0f, 0.0f, 1.0f,
+             0.5f, -0.5f,  0.5f, 0.0f, 1.0f, 0.0f,
+            -0.5f, -0.5f, -0.5f, 0.0f, 1.0f, 1.0f,
+             0.5f, -0.5f,  0.5f, 0.0f, 1.0f, 0.0f,
+            -0.5f, -0.5f,  0.5f, 1.0f, 0.0f, 0.0f
         };
 
-        vertexCount = vertices.length / 3;
+        vertexCount = vertices.length / 6;
 
         // Create a Vertex Array Object (VAO) and Vertex Buffer Object (VBO)
         vaoId = GL30.glGenVertexArrays();
@@ -57,16 +82,20 @@ public class Cube {
         buffer.put(vertices).flip();
         GL30.glBufferData(GL30.GL_ARRAY_BUFFER, buffer, GL30.GL_STATIC_DRAW);
 
-        // Enable the position attribute (this is how we'll access the vertex positions)
-        GL30.glVertexAttribPointer(0, 3, GL30.GL_FLOAT, false, 0, 0);
+        // Enable the position attribute
+        GL30.glVertexAttribPointer(0, 3, GL30.GL_FLOAT, false, 6 * Float.BYTES, 0);
         GL30.glEnableVertexAttribArray(0);
+
+        // Enable the color attribute
+        GL30.glVertexAttribPointer(1, 3, GL30.GL_FLOAT, false, 6 * Float.BYTES, 3 * Float.BYTES);
+        GL30.glEnableVertexAttribArray(1);
 
         GL30.glBindVertexArray(0); // Unbind the VAO
 
         // Load shaders
         shaderProgram = createShaderProgram(
-                loadShader("/path/to/vertex.glsl", GL20.GL_VERTEX_SHADER),
-                loadShader("/path/to/fragment.glsl", GL20.GL_FRAGMENT_SHADER)
+                loadShader("src/resources/shaders/vertex.glsl", GL20.GL_VERTEX_SHADER),
+                loadShader("src/resources/shaders/fragment.glsl", GL20.GL_FRAGMENT_SHADER)
         );
     }
 

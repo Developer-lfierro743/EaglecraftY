@@ -1,5 +1,6 @@
 package com.xojangstudios.eaglecrafty.core;
 
+import com.xojangstudios.eaglecrafty.entities.Player;
 import com.xojangstudios.eaglecrafty.input.InputHandler;
 import com.xojangstudios.eaglecrafty.engine.Renderer;
 import com.xojangstudios.eaglecrafty.engine.Window;
@@ -10,13 +11,15 @@ public class Game {
     private final Renderer renderer;
     private final InputHandler inputHandler;
     private final World world;
+    private final Player player; // Add a Player object
     @SuppressWarnings("unused")
     private final AssetManager assetManager;
 
     public Game() {
         // Initialize the components
         renderer = new Renderer();
-        inputHandler = new InputHandler();
+        player = new Player(); // Initialize the player
+        inputHandler = new InputHandler(player); // Pass the player to the input handler
         world = new World();
         assetManager = new AssetManager();
 
@@ -39,6 +42,9 @@ public class Game {
             // Handle input
             inputHandler.update();
 
+            // Update the player
+            player.update();
+
             // Update the world
             world.update();
 
@@ -54,7 +60,7 @@ public class Game {
         renderer.cleanup();
         Window.terminate();
 
-        // Log shutdown message
+        // Log shutdown messagea
         if (SharedConstants.ENABLE_LOGGING) {
             System.out.println("EaglecraftY has been shut down.");
         }
