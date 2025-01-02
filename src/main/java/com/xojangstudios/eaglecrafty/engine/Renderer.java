@@ -16,7 +16,7 @@ import org.lwjgl.system.MemoryUtil;
 import com.xojangstudios.eaglecrafty.world.World;
 
 public class Renderer {
-    private static final String SHADER_DIR = "/home/lfierro743/GameProjects/EaglecraftY/src/resources/shaders/";
+    private static final String SHADER_DIR = "/home/lfierro743/EaglecraftY/src/resources/shaders/";
 
     private int shaderProgram;
     private int vao;
@@ -38,23 +38,28 @@ public class Renderer {
         // Set up cube data
         float[] vertices = {
             // Front face
-            -0.5f, -0.5f, 0.5f,  0.5f, -0.5f, 0.5f,  0.5f, 0.5f, 0.5f,
-            -0.5f, -0.5f, 0.5f,  0.5f, 0.5f, 0.5f,  -0.5f, 0.5f, 0.5f,
+            -0.5f, -0.5f,  0.5f,  0.5f, -0.5f,  0.5f,  0.5f,  0.5f,  0.5f,
+            -0.5f, -0.5f,  0.5f,  0.5f,  0.5f,  0.5f, -0.5f,  0.5f,  0.5f,
+
             // Back face
-            -0.5f, -0.5f, -0.5f, 0.5f, -0.5f, -0.5f, 0.5f, 0.5f, -0.5f,
-            -0.5f, -0.5f, -0.5f, 0.5f, 0.5f, -0.5f, -0.5f, 0.5f, -0.5f,
+            -0.5f, -0.5f, -0.5f,  0.5f, -0.5f, -0.5f,  0.5f,  0.5f, -0.5f,
+            -0.5f, -0.5f, -0.5f,  0.5f,  0.5f, -0.5f, -0.5f,  0.5f, -0.5f,
+
             // Left face
-            -0.5f, -0.5f, -0.5f, -0.5f, -0.5f, 0.5f, -0.5f, 0.5f, 0.5f,
-            -0.5f, -0.5f, -0.5f, -0.5f, 0.5f, 0.5f, -0.5f, 0.5f, -0.5f,
+            -0.5f, -0.5f, -0.5f, -0.5f, -0.5f,  0.5f, -0.5f,  0.5f,  0.5f,
+            -0.5f, -0.5f, -0.5f, -0.5f,  0.5f,  0.5f, -0.5f,  0.5f, -0.5f,
+
             // Right face
-            0.5f, -0.5f, -0.5f,  0.5f, -0.5f, 0.5f,  0.5f, 0.5f, 0.5f,
-            0.5f, -0.5f, -0.5f,  0.5f, 0.5f, 0.5f,   0.5f, 0.5f, -0.5f,
+             0.5f, -0.5f, -0.5f,  0.5f, -0.5f,  0.5f,  0.5f,  0.5f,  0.5f,
+             0.5f, -0.5f, -0.5f,  0.5f,  0.5f,  0.5f,  0.5f,  0.5f, -0.5f,
+
             // Top face
-            -0.5f, 0.5f, -0.5f,  -0.5f, 0.5f, 0.5f,  0.5f, 0.5f, 0.5f,
-            -0.5f, 0.5f, -0.5f,  0.5f, 0.5f, 0.5f,   0.5f, 0.5f, -0.5f,
+            -0.5f,  0.5f, -0.5f,  0.5f,  0.5f, -0.5f,  0.5f,  0.5f,  0.5f,
+            -0.5f,  0.5f, -0.5f,  0.5f,  0.5f,  0.5f, -0.5f,  0.5f,  0.5f,
+
             // Bottom face
-            -0.5f, -0.5f, -0.5f, 0.5f, -0.5f, -0.5f, 0.5f, -0.5f, 0.5f,
-            -0.5f, -0.5f, -0.5f, 0.5f, -0.5f, 0.5f,  -0.5f, -0.5f, 0.5f
+            -0.5f, -0.5f, -0.5f,  0.5f, -0.5f, -0.5f,  0.5f, -0.5f,  0.5f,
+            -0.5f, -0.5f, -0.5f,  0.5f, -0.5f,  0.5f, -0.5f, -0.5f,  0.5f
         };
 
         // Create VAO and VBO
@@ -105,7 +110,7 @@ public class Renderer {
         GL30.glBindVertexArray(vao);
 
         // Draw the cube
-        GL11.glDrawArrays(GL11.GL_TRIANGLES, 0, 36);
+        GL11.glDrawArrays(GL11.GL_TRIANGLES, 0, 36); // 36 vertices (6 faces * 2 triangles * 3 vertices)
 
         // Unbind the VAO
         GL30.glBindVertexArray(0);
@@ -125,7 +130,10 @@ public class Renderer {
 
     private int loadShader(String filePath, int type) {
         try {
+            System.out.println("Loading shader: " + filePath);
             String source = new String(Files.readAllBytes(Paths.get(filePath)));
+            System.out.println("Shader source: " + source);
+
             int shader = GL20.glCreateShader(type);
             GL20.glShaderSource(shader, source);
             GL20.glCompileShader(shader);
