@@ -16,7 +16,7 @@ import org.lwjgl.system.MemoryUtil;
 import com.xojangstudios.eaglecrafty.world.World;
 
 public class Renderer {
-    private static final String SHADER_DIR = "/home/lfierro743/EaglecraftY/src/resources/shaders/";
+    private static final String SHADER_DIR = "src/main/resources/shaders/";
 
     private int shaderProgram;
     private int vao;
@@ -35,31 +35,51 @@ public class Renderer {
                 loadShader(SHADER_DIR + "fragment.glsl", GL20.GL_FRAGMENT_SHADER)
         );
 
-        // Set up cube data
+        // Set up cube data with colors
         float[] vertices = {
-            // Front face
-            -0.5f, -0.5f,  0.5f,  0.5f, -0.5f,  0.5f,  0.5f,  0.5f,  0.5f,
-            -0.5f, -0.5f,  0.5f,  0.5f,  0.5f,  0.5f, -0.5f,  0.5f,  0.5f,
-
-            // Back face
-            -0.5f, -0.5f, -0.5f,  0.5f, -0.5f, -0.5f,  0.5f,  0.5f, -0.5f,
-            -0.5f, -0.5f, -0.5f,  0.5f,  0.5f, -0.5f, -0.5f,  0.5f, -0.5f,
-
-            // Left face
-            -0.5f, -0.5f, -0.5f, -0.5f, -0.5f,  0.5f, -0.5f,  0.5f,  0.5f,
-            -0.5f, -0.5f, -0.5f, -0.5f,  0.5f,  0.5f, -0.5f,  0.5f, -0.5f,
-
-            // Right face
-             0.5f, -0.5f, -0.5f,  0.5f, -0.5f,  0.5f,  0.5f,  0.5f,  0.5f,
-             0.5f, -0.5f, -0.5f,  0.5f,  0.5f,  0.5f,  0.5f,  0.5f, -0.5f,
-
-            // Top face
-            -0.5f,  0.5f, -0.5f,  0.5f,  0.5f, -0.5f,  0.5f,  0.5f,  0.5f,
-            -0.5f,  0.5f, -0.5f,  0.5f,  0.5f,  0.5f, -0.5f,  0.5f,  0.5f,
-
-            // Bottom face
-            -0.5f, -0.5f, -0.5f,  0.5f, -0.5f, -0.5f,  0.5f, -0.5f,  0.5f,
-            -0.5f, -0.5f, -0.5f,  0.5f, -0.5f,  0.5f, -0.5f, -0.5f,  0.5f
+            // Positions          // Colors
+            // Front face (Red)
+            -0.5f, -0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
+             0.5f, -0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
+             0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
+            -0.5f, -0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
+             0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
+            -0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
+            // Back face (Green)
+            -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
+             0.5f, -0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
+             0.5f,  0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
+            -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
+             0.5f,  0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
+            -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
+            // Left face (Blue)
+            -0.5f, -0.5f, -0.5f,  0.0f, 0.0f, 1.0f,
+            -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, 1.0f,
+            -0.5f,  0.5f,  0.5f,  0.0f, 0.0f, 1.0f,
+            -0.5f, -0.5f, -0.5f,  0.0f, 0.0f, 1.0f,
+            -0.5f,  0.5f,  0.5f,  0.0f, 0.0f, 1.0f,
+            -0.5f,  0.5f, -0.5f,  0.0f, 0.0f, 1.0f,
+            // Right face (Yellow)
+             0.5f, -0.5f, -0.5f,  1.0f, 1.0f, 0.0f,
+             0.5f, -0.5f,  0.5f,  1.0f, 1.0f, 0.0f,
+             0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 0.0f,
+             0.5f, -0.5f, -0.5f,  1.0f, 1.0f, 0.0f,
+             0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 0.0f,
+             0.5f,  0.5f, -0.5f,  1.0f, 1.0f, 0.0f,
+            // Top face (Cyan)
+            -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, 1.0f,
+            -0.5f,  0.5f,  0.5f,  0.0f, 1.0f, 1.0f,
+             0.5f,  0.5f,  0.5f,  0.0f, 1.0f, 1.0f,
+            -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, 1.0f,
+             0.5f,  0.5f,  0.5f,  0.0f, 1.0f, 1.0f,
+             0.5f,  0.5f, -0.5f,  0.0f, 1.0f, 1.0f,
+            // Bottom face (Magenta)
+            -0.5f, -0.5f, -0.5f,  1.0f, 0.0f, 1.0f,
+             0.5f, -0.5f, -0.5f,  1.0f, 0.0f, 1.0f,
+             0.5f, -0.5f,  0.5f,  1.0f, 0.0f, 1.0f,
+            -0.5f, -0.5f, -0.5f,  1.0f, 0.0f, 1.0f,
+             0.5f, -0.5f,  0.5f,  1.0f, 0.0f, 1.0f,
+            -0.5f, -0.5f,  0.5f,  1.0f, 0.0f, 1.0f
         };
 
         // Create VAO and VBO
@@ -74,8 +94,13 @@ public class Renderer {
         GL30.glBindBuffer(GL30.GL_ARRAY_BUFFER, vbo);
         GL30.glBufferData(GL30.GL_ARRAY_BUFFER, vertexBuffer, GL30.GL_STATIC_DRAW);
 
-        GL20.glVertexAttribPointer(0, 3, GL20.GL_FLOAT, false, 0, 0);
+        // Enable the position attribute
+        GL20.glVertexAttribPointer(0, 3, GL20.GL_FLOAT, false, 6 * Float.BYTES, 0);
         GL20.glEnableVertexAttribArray(0);
+
+        // Enable the color attribute
+        GL20.glVertexAttribPointer(1, 3, GL20.GL_FLOAT, false, 6 * Float.BYTES, 3 * Float.BYTES);
+        GL20.glEnableVertexAttribArray(1);
 
         // Clean up
         MemoryUtil.memFree(vertexBuffer);

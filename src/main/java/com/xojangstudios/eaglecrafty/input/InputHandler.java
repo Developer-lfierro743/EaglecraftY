@@ -13,10 +13,12 @@ import com.xojangstudios.eaglecrafty.entities.Player;
 public class InputHandler {
     private final Player player; // Reference to the player object
     private boolean isMouseLocked; // Track the mouse lock state
+    private boolean isEscapePressed; // Track the ESC key press state
 
     public InputHandler(Player player) {
         this.player = player;
         this.isMouseLocked = false; // Initialize the mouse lock state to false
+        this.isEscapePressed = false; // Initialize the ESC key press state to false
     }
 
     public void update() {
@@ -26,6 +28,13 @@ public class InputHandler {
         // Check for mouse lock key press (e.g., E)
         if (GLFW.glfwGetKey(window, GLFW.GLFW_KEY_E) == GLFW.GLFW_PRESS) {
             toggleMouseLock();
+        }
+
+        // Check for ESC key press
+        if (GLFW.glfwGetKey(window, GLFW.GLFW_KEY_ESCAPE) == GLFW.GLFW_PRESS) {
+            isEscapePressed = true;
+        } else {
+            isEscapePressed = false;
         }
 
         // Check for WASD key presses and move the player
@@ -51,5 +60,9 @@ public class InputHandler {
         } else {
             glfwSetInputMode(glfwGetCurrentContext(), GLFW_CURSOR, GLFW_CURSOR_NORMAL);
         }
+    }
+
+    public boolean isEscapePressed() {
+        return isEscapePressed;
     }
 }
