@@ -1,0 +1,36 @@
+EaglecraftY End User License Agreement
+
+This End User License Agreement (EULA) is entered into by and between Xojang Studios ZB ("Developer") and the individual or entity using or installing EaglecraftY ("User"). By using or installing EaglecraftY, User agrees to be bound by the terms and conditions set forth in this EULA.
+
+License Grant Developer grants User a non-transferable, non-exclusive license to use EaglecraftY for personal, non-commercial purposes. User may not use EaglecraftY for any illegal, unauthorized, or unlawful purpose, or in any manner that violates any applicable laws or regulations.
+
+Ownership EaglecraftY and all intellectual property rights therein, including but not limited to copyrights, trademarks, and patents, are owned by Developer. User acknowledges and agrees that Developer retains all rights, title, and interest in and to EaglecraftY and all intellectual property rights therein.
+
+Prohibited Uses User may not engage in any of the following activities in connection with EaglecraftY:
+
+Modifying, reverse engineering, decompiling, disassembling, or otherwise attempting to derive the source code of EaglecraftY;
+Distributing, selling, renting, leasing, or otherwise transferring EaglecraftY to any third party;
+Using EaglecraftY for any commercial purpose, including but not limited to advertising, marketing, or promotional activities;
+Using EaglecraftY in any manner that violates any applicable laws or regulations, or in a manner that infringes upon the rights of any third party;
+Using EaglecraftY for any illegal, unauthorized, or unlawful purpose, or in a manner that is harmful, threatening, abusive, harassing, or defamatory to any person or entity;
+Using EaglecraftY for any purpose that promotes or encourages discrimination, hate speech, violence, or illegal activity;
+Using EaglecraftY to engage in any activity that is inappropriate, offensive, or obscene, or that could be reasonably considered to be such;
+Using EaglecraftY to engage in any activity that involves sexual content, grooming, or any other activity that could be reasonably considered to be inappropriate for minors;
+Using EaglecraftY to engage in any activity that involves malicious, unlawful, or inappropriate mods, as determined by Developer in its sole discretion.
+Modding API Developer may provide a modding API for EaglecraftY, which allows User to create and distribute mods for EaglecraftY. User agrees to use the modding API solely for lawful and legitimate purposes, and to comply with all applicable laws and regulations. User further agrees not to use the modding API for any malicious, unlawful, or inappropriate purposes, or to distribute any mods that violate this EULA or any applicable laws or regulations.
+
+Updates and Changes Developer reserves the right to update, modify, or change EaglecraftY and this EULA from time to time. User agrees to be bound by any updates, modifications, or changes to EaglecraftY and this EULA, which shall be effective immediately upon posting on the Developer's website. User agrees to regularly check the Developer's website for updates and changes to this EULA.
+
+Termination Developer may terminate User's license to use EaglecraftY at any time, for any reason or no reason, in its sole discretion. Upon termination, User must immediately cease using EaglecraftY and destroy all copies thereof.
+
+Disclaimer of Warranties EaglecraftY is provided "as is" and without any warranties, express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, and non-infringement. Developer makes no warranties that EaglecraftY will be error-free, uninterrupted, or free from viruses or other harmful components.
+
+Limitation of Liability In no event shall Developer be liable for any damages, including but not limited to direct, indirect, incidental, consequential, or punitive damages, arising out of or in connection with the use or inability to use EaglecraftY, or any other interactions with Developer, even if Developer has been advised of the possibility of such damages.
+
+Governing Law This EULA shall be governed by and construed in accordance with the laws of the United States and the state of California, without regard to its conflict of laws principles.
+
+Miscellaneous This EULA constitutes the entire agreement between Developer and User with respect to the subject matter hereof, and supersedes all prior or contemporaneous agreements, understandings, and representations, whether oral or written, with respect to the subject matter hereof. This EULA may not be amended or modified except in writing signed by both parties.
+
+By using or installing EaglecraftY, User agrees to be bound by the terms and conditions set forth in this EULA.
+
+Additional note: Xojang Studios ZB is an independent video game company and is not affiliated with Mojang or Microsoft.
