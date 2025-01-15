@@ -12,8 +12,8 @@ Do you believe Minecraft has room for improvement or innovation? Have you ever e
 EaglecraftY is a game inspired by Minecraft, developed by Xojang Studios ZB. It offers a fresh experience with an Industrial Revolution theme, featuring:
 
 1. **New Blocks and Items**: Designed around industrial and modern concepts.
-2. **Modular Codebase**: Allows for easy expansion and customization.
-3. **High Performance**: Engine optimized to deliver over 400 FPS without additional optimization mods.
+2. **Modular Design**: Allows for internal expansion and potential future mod support (details forthcoming).
+3. **High Performance**:  We are utilizing [Engine Name] and focusing on efficient code to deliver a smooth and responsive gameplay experience, targeting high frame rates.
 4. **Unique World Format (EWF)**: Ensures efficient saving and loading of chunks, providing compatibility and efficiency.
 
 Explore a new world with innovative features and mechanics that push the boundaries of traditional gameplay.
@@ -26,7 +26,7 @@ We are creating EaglecraftY to address several critical issues we see in the cur
 3. **Poor Moderation**: The Minecraft community has faced issues with poor moderation, leading to exploitation and the spread of inappropriate content. [Source](https://www.polygon.com/2019/6/24/18715589/minecraft-marketplace-moderation-issues)
 4. **Microsoft's Acquisition**: Since Microsoft's acquisition of Mojang, there have been criticisms regarding anti-trust issues, mishandling of the game, and the introduction of microtransactions. [Source](https://www.theverge.com/2014/9/15/6152153/microsoft-buys-minecraft)
 5. **Legal Concerns**: Mojang and Microsoft have faced accusations of breaking EU consumer laws, particularly in Sweden and the European Union. [Source](https://www.eurogamer.net/articles/2016-06-21-minecraft-eu-consumer-rights)
-6. **Community Frustration**: Many players feel that Minecraft has become stagnant, repetitive, and overly commercialized, losing the innovative spirit it once had. [Source](https://www.pcgamer.com/minecraft-players-are-frustrated-with-the-games-direction/)
+6. **Community Frustration**: Many players feel that Minecraft has become stagnant, repetitive, and overly commercialized, losing the innovative spirit it once had. [Source](https://www.pcgamer.com/minecraft-players-are-frustrated-with-the-games-direction/)  [Add more targeted sources here if possible]
 
 By creating EaglecraftY, we aim to provide a fresh, innovative experience that addresses these concerns and empowers the community.
 
@@ -67,11 +67,11 @@ By embracing the Industrial Revolution theme, we aim to push the boundaries of t
 ## Our Vision
 We aim to create a game that:
 
-- **Empowers the Community**: With an open-source modding API, players can create and share mods freely, fostering a collaborative and innovative environment.
-- **Delivers Performance**: Our engine is optimized to run at over 400 FPS, even on lower-end devices, ensuring a smooth and enjoyable experience for all players.
-- **Respects Creativity**: No hardcoded world borders or restrictive mechanics, allowing players to build and explore without limitations.
-- **Honors Minecraft's Legacy**: We follow Minecraft's pre-acquisition steps and original plans, completing the vision and cycle that was initially set out by its creators.
-- **Innovates Boldly**: We are not afraid to push the boundaries of what a Minecraft-inspired game can be, introducing new features and mechanics that challenge the status quo.
+- **Empowers the Community**:  We are exploring options for community involvement and feedback.
+- **Delivers Performance**: Our engine is optimized for smooth gameplay.
+- **Respects Creativity**: No hardcoded world borders or restrictive mechanics.
+- **Honors Minecraft's Legacy**: We are inspired by Minecraft's early vision.
+- **Innovates Boldly**: We are introducing new features and mechanics.
 
 By adhering to these principles, we strive to build a better formula for a sandbox game, inspired by the original spirit of Minecraft.
 
@@ -81,35 +81,62 @@ By adhering to these principles, we strive to build a better formula for a sandb
 We are an independent video game entity and we take our intellectual property rights very seriously. Unauthorized use of our code, assets, or branding will result in legal action, including but not limited to DMCA takedown requests.
 
 ### Prohibited Actions:
-1. **Forking**: Do not fork this repository without explicit permission from Xojang Studios ZB.
-2. **Copying**: Unauthorized copying or redistribution of our code or assets is strictly prohibited.
-3. **Fan Projects**: Creating fan projects or derivatives based on EaglecraftY is not allowed.
-4. **Unauthorized Use**: Using our branding or intellectual property without authorization is forbidden.
+1. **Unauthorized Use**: Using our code, assets, or branding without authorization is forbidden.
 
 > "Respect our copyrights. Think twice before infringing."
 
-**YOU ARE NOT US (Xojang Studios ZB). DO NOT CREATE FAN PROJECTS.**
+This is a public GitHub repository, but unauthorized use is strictly prohibited.
 
-This is a public GitHub repository, but DO NOT FORK it without explicit permission.
+## To-Do List
+
+### Core Game Mechanics
+
+* [ ] Implement core game loop and basic world generation.
+* [ ] Develop the EWF (Unique World Format) system.
+* [ ] Implement basic inventory and crafting systems.
+* [ ] Create the thirst mechanic and its associated UI.
+* [ ] Design and implement the red dragon AI and mechanics.
+
+
+### World Building
+
+* [ ] Design and implement the Sky Dimension.
+* [ ] Design and implement the Farlands dimension.
+* [ ] Create new biomes and structures for the Industrial Revolution theme.
+* [ ] Design and implement the new blocks (gears, ruby ore, crying obsidian, etc.).
+
+
+###  Art and Assets
+
+* [ ] Create concept art for new blocks, environments, and characters.
+* [ ] Develop 3D models for new blocks, items, and entities.
+* [ ] Create textures and animations for all assets.
+
+
+###  Other
+
+* [ ] Develop the in-game account management system.
+* [ ] Set up a dedicated server infrastructure.
+* [ ] Plan for marketing and community engagement.
+* [ ] Establish a robust bug tracking system.
 
 ### Consequences of Infringement
-Engaging in any of the prohibited actions listed above will result in:
+Engaging in any prohibited actions will result in:
 
-- **Legal Action**: We will pursue legal action, including but not limited to DMCA takedown requests, to protect our intellectual property.
-- **Account Suspension**: Your GitHub account may be reported and suspended for violating our terms.
-- **Community Ban**: You will be banned from participating in our community forums, Discord server, and other related platforms.
+- **Legal Action**: We will pursue legal action to protect our intellectual property.
+- **Account Suspension**: Your in-game account will be banned.
+- **Community Ban**: You may be banned from our community platforms.
 
-We take our intellectual property rights very seriously and are committed to protecting the integrity of our project. Please respect our work and the effort we have put into creating EaglecraftY.
+We take our intellectual property rights very seriously and are committed to protecting the integrity of our project. Please respect our work.
 
-For any questions or to request permission, please contact us at:
+For any questions, please contact us at:
 
 - **Email**: XojangStudiozZB@mail.com
 
 Thank you for your understanding and cooperation.
 
 ## Join Us
-> We are excited to bring EaglecraftY to life and challenge the status quo of Minecraft.
-> Join us on this journey and help us create something truly unique and innovative.
+> We are excited to bring EaglecraftY to life.
 
 ## Contact Us
 For inquiries, collaborations, or support, please contact us at:
