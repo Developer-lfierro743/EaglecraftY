@@ -125,7 +125,6 @@ For inquiries, collaborations, or support, please contact us at:
 - **Email**: XojangStudiozZB@mail.com  
 - **Website**: Coming soon!  
 
-
 ## Disclaimer:
 EaglecraftY is a commercial, independent project created by **Xojang Studios ZB**. It is not affiliated with Mojang, Microsoft, or any of their subsidiaries.  
 
