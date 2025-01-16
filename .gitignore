@@ -4,8 +4,6 @@
 # Ignore Gradle build output directory
 build
 
-# Ignore Vscode directory
-.vscode
+# Ignore Vscode project folder
 
-# Ingore bin directory
-bin
+.vscode 
