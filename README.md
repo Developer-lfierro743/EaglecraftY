@@ -41,7 +41,7 @@ We're excited to build this game with you. Join our Discord server for updates, 
 
 ## Legal
 
-EaglecraftY is an independent project; not affiliated with Mojang Studios or Microsoft. All assets and code are protected by copyright. Unauthorized use is prohibited. [main/LICENCE]
+EaglecraftY is an independent project; not affiliated with Mojang Studios or Microsoft. All assets and code are protected by copyright. Unauthorized use is prohibited. [LICENCE]
 
 ## Contact
 
