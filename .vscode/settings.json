@@ -1,8 +1,0 @@
-{
-<<<<<<< HEAD
-    "java.configuration.updateBuildConfiguration": "automatic",
-    "java.debug.settings.onBuildFailureProceed": true
-=======
-    "java.project.sourcePaths": []
->>>>>>> 1de10c0 (redoing everything from scratch(final updaate))
-}
