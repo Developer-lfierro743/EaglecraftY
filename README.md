@@ -1,4 +1,4 @@
-# Welcome to Project EaglecraftY! 🦅
+# Welcome to Project EaglecraftY!
 
 **Developed by Xojang Studios ZB**  
 ![License](https://img.shields.io/badge/License-proprietary-red)  
