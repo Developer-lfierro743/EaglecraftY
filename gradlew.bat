@@ -13,11 +13,8 @@
 @rem See the License for the specific language governing permissions and
 @rem limitations under the License.
 @rem
-<<<<<<< HEAD
 @rem SPDX-License-Identifier: Apache-2.0
 @rem
-=======
->>>>>>> 1de10c0 (redoing everything from scratch(final updaate))
 
 @if "%DEBUG%"=="" @echo off
 @rem ##########################################################################

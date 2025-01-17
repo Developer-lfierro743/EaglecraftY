@@ -15,11 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-<<<<<<< HEAD
 # SPDX-License-Identifier: Apache-2.0
 #
-=======
->>>>>>> 1de10c0 (redoing everything from scratch(final updaate))
 
 ##############################################################################
 #
@@ -89,12 +86,7 @@ done
 # shellcheck disable=SC2034
 APP_BASE_NAME=${0##*/}
 # Discard cd standard output in case $CDPATH is set (https://github.com/gradle/gradle/issues/25036)
-<<<<<<< HEAD
-APP_HOME=$( cd -P "${APP_HOME:-./}" > /dev/null && printf '%s
-' "$PWD" ) || exit
-=======
-APP_HOME=$( cd "${APP_HOME:-./}" > /dev/null && pwd -P ) || exit
->>>>>>> 1de10c0 (redoing everything from scratch(final updaate))
+APP_HOME=$( cd -P "${APP_HOME:-./}" > /dev/null && printf '%s\n' "$PWD" ) || exit
 
 # Use the maximum available, or set MAX_FD != -1 to use that value.
 MAX_FD=maximum
