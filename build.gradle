@@ -18,10 +18,9 @@ ext {
     lwjglVersion = '3.3.6'
     jomlVersion = '1.10.7'
     jomlPrimitivesVersion = '1.10.0'
-    steamworks4jVersion = '1.9.0'
-    steamworks4jServerVersion = '1.9.0'
+    // steamworks4jVersion = '1.9.0' // Commented out for now
+    // steamworks4jServerVersion = '1.9.0' // Commented out for now
 }
-
 
 // Define OS-specific native library switcher (improved logic)
 def getLwjglNatives() {
@@ -45,33 +44,38 @@ def getLwjglNatives() {
         case { it.contains('freebsd') }:
             return 'natives-freebsd'
         default:
-            throw new GradleException("Unsupported OS: $os")
+            throw new GradleException("Unsupported OS: $os (Architecture: $arch)")
     }
 }
 
 def lwjglNatives = getLwjglNatives()
 
-
 dependencies {
     implementation platform("org.lwjgl:lwjgl-bom:${lwjglVersion}")
 
+    // LWJGL Core Modules
     implementation "org.lwjgl:lwjgl"
     implementation "org.lwjgl:lwjgl-assimp"
-    implementation "org.lwjgl:lwjgl-bgfx"
-    implementation "org.lwjgl:lwjgl-freetype"
     implementation "org.lwjgl:lwjgl-glfw"
     implementation "org.lwjgl:lwjgl-opengl"
+    implementation "org.lwjgl:lwjgl-stb"
+    implementation "org.lwjgl:lwjgl-openal"
+
+    // JOML (Math Library)
     implementation "org.joml:joml:${jomlVersion}"
     implementation "org.joml:joml-primitives:${jomlPrimitivesVersion}"
-    implementation "com.code-disaster.steamworks4j:steamworks4j:${steamworks4jVersion}"
-    implementation "com.code-disaster.steamworks4j:steamworks4j-server:${steamworks4jServerVersion}"
 
-    runtimeOnly "org.lwjgl:lwjgl:${lwjglNatives}"
-    runtimeOnly "org.lwjgl:lwjgl-assimp:${lwjglNatives}"
-    runtimeOnly "org.lwjgl:lwjgl-freetype:${lwjglNatives}"
-    runtimeOnly "org.lwjgl:lwjgl-glfw:${lwjglNatives}"
-    runtimeOnly "org.lwjgl:lwjgl-opengl:${lwjglNatives}" // Only runtimeOnly necessary natives
+    // Steamworks4J (Commented out for now)
+    // implementation "com.code-disaster.steamworks4j:steamworks4j:${steamworks4jVersion}"
+    // implementation "com.code-disaster.steamworks4j:steamworks4j-server:${steamworks4jServerVersion}"
 
+    // LWJGL Natives
+    runtimeOnly "org.lwjgl:lwjgl::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-assimp::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-glfw::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-openal::$lwjglNatives"
 }
 
 sourceSets {
