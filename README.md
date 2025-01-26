@@ -1,50 +1,65 @@
-# Project EaglecraftY: A New Sandbox Adventure
+# Project EaglecraftY  
 
-> Developed by NovaForge Studios 
+*"A spiritual successor to sandbox legends - built* ***by players, for players."***  
 
-![License](https://img.shields.io/badge/License-proprietary-red)
-![Version](https://img.shields.io/badge/Version-v0.0-blue)
-[![Discord](https://img.shields.io/badge/Discord-Join%20Our%20Server-7289DA?logo=discord)](https://discord.gg/acN93WBRC5)
+![License](https://img.shields.io/badge/License-ECL%20(Community%20Edition)-brightgreen) 
+![Version](https://img.shields.io/badge/Version-Pre--Alpha%200.0.1-orange) 
+[![Discord](https://img.shields.io/discord/112233445566778899?label=Discord&logo=discord&color=7289DA)](https://discord.gg/acN93WBRC5) 
+[![Contribute](https://img.shields.io/badge/Contribute-GitHub-blue?logo=github)](https://github.com/Developer-lfieriro743/EaglecraftY)
 
-## A Fresh Take on Sandbox Gaming
+## 🌟 Why EaglecraftY?
 
-EaglecraftY offers a unique sandbox experience, inspired by Minecraft but with a fresh vision.  We're building a world set during the Industrial Revolution, filled with innovation and exciting new possibilities.
+We're addressing **Minecraft's greatest failures** while honoring Notch's original vision:
+- **No Corporate Chains**: 100% community-driven development
+- **Zero Fragmentation**: Unified Java/Bedrock-like codebase ([TeaVM](https://teavm.org/) powered web compatibility)
+- **Modding Freedom**: Open-source tools, no walled gardens
+- **Transparent Policies**: No predatory monetization - just a **one-time $20.99 purchase**
 
-## Core Features
+## 🚀 Core Features
 
-* **Industrial Revolution Setting:** Explore a world of gears, machinery, and technological marvels.
-* **High-Performance Gameplay:** Experience smooth, high-FPS action.
-* **Unique World Format (EWF):**  Our custom world format expands gameplay possibilities.
-* **Community Focus:** Your feedback is crucial to our development.
-* **No Build Height Limit:** Unleash your creativity without restrictions.
+### 🎮 Gameplay
+- 🏭 **Industrial Revolution Era**: Factories, steam engines & mechanical contraptions
+- 🐉 **Tameable Red Dragons** & **Friendly Withers** (No more boss anxiety!)
+- 🌌 **Expanded Dimensions**: Revived Sky Dimension & stabilized Farlands
+- 💧 **Survival 2.0**: Thirst system, dynamic weather, tiered crafting
 
-## What Sets Us Apart
+### 🔧 Technical
+- ⚡ **Web Browser Play**: Chromebook-friendly, 900+ FPS optimization
+- 🧱 **Unified Codebase**: Java-like modding + C++ performance
+- 📦 **Eagle World Format (EWF)**: Infinite chunks, retro-compatible saves
+- 🛡️ **AI-Powered Moderation**: Clean chat, no toxic servers
 
-We draw inspiration from Notch's original Minecraft vision, incorporating elements that never fully materialized, alongside entirely new features:
+### 🌍 Community
+- 🗳️ **Democratized Updates**: Players vote on features via Discord
+- 🧪 **Open Modding API**: Early access to PDB files & dev tools
+- 📜 **Transparent EULA**: Co-written with EU legal experts
 
-* **New Blocks & Items:** Gears, ruby ore, crying obsidian, and more!
-* **Innovative Mechanics:** Tameable red dragons, friendly withers, a thirst system, and much more.
-* **Expanded Dimensions:** Explore the Sky Dimension and the mysterious Farlands.
+## 🔨 Current Development Focus
+- **Pre-Alpha 0.0.1** (Q4 2024):
+  - Core engine rewrite (EaglercraftX → EaglecraftY)
+  - Basic block system (64x64 textures)
+  - Web client prototype
 
-## Our Vision
+## 📜 Our Manifesto
+*"We reject:*  
+- *Corporate-controlled sandboxes*  
+- *Pay-to-win marketplaces*  
+- *DMCA-abusing legal teams*  
 
-We aim to create a game that's:
+*Join the open-source voxel revolution."*
 
-* **Community-driven:** Your feedback shapes our development.
-* **High-performing:** Smooth and engaging gameplay.
-* **Creative:**  Unrestricted building and exploration.
-* **Innovative:** Pushing the boundaries of the sandbox genre.
+## 👥 How to Contribute
+1. **Coders**: Help optimize our TeaVM Java→JS compiler
+2. **Artists**: Design steampunk texture packs (CC-BY 4.0)
+3. **Testers**: Stress-test our web client on Chromebooks
 
-## Join the EaglecraftY Community!
+## 🚨 Legal Transparency
+- **Not affiliated** with Mojang/Microsoft - We use **0% Minecraft code/assets**
+- **License**: Eaglecraft Community License (ECL) - *Free for non-commercial use*
+- **Trademark Protected**: "EaglecraftY" & logo are ® NovaForge Studios
 
-We're excited to build this game with you. Join our Discord server for updates, discussions, and to share your ideas!
+---
 
-## Legal
-
-EaglecraftY is an independent project; not affiliated with Mojang Studios or Microsoft. All assets and code are protected by copyright. Unauthorized use is prohibited. [LICENCE](https://raw.githubusercontent.com/Developer-lfierro743/EaglecraftY/refs/heads/main/LICENCE?token=GHSAT0AAAAAAC36332VRNHMZVEUIVQNJE7CZ4KQJCA)
-
-## Contact
-
-NovaForgeStudios@mail.com
-
-**Copyright © 2024-2025 NovaForge Studios. All rights reserved.**
+[📘 Documentation](https://eaglecrafty.gitbook.io/docs) | 
+[🐛 Issue Tracker](https://github.com/Developer-lfieriro743/EaglecraftY/issues) | 
+[📧 Contact](mailto:NovaForgeStudios@mail.com)
