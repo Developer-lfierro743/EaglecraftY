@@ -1,6 +1,6 @@
 # Project EaglecraftY: A New Sandbox Adventure
 
-> Developed by Xojang Studios ZB
+> Developed by NovaForge Studios 
 
 ![License](https://img.shields.io/badge/License-proprietary-red)
 ![Version](https://img.shields.io/badge/Version-v0.0-blue)
@@ -47,4 +47,4 @@ EaglecraftY is an independent project; not affiliated with Mojang Studios or Mic
 
 XojangStudiozZB@mail.com
 
-**Copyright © 2024-2025 Xojang Studios ZB. All rights reserved.**
+**Copyright © 2024-2025 NovaForge Studios. All rights reserved.**
