@@ -45,6 +45,6 @@ EaglecraftY is an independent project; not affiliated with Mojang Studios or Mic
 
 ## Contact
 
-XojangStudiozZB@mail.com
+NovaForgeStudios@mail.com
 
 **Copyright © 2024-2025 NovaForge Studios. All rights reserved.**
