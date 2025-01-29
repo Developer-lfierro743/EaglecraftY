@@ -1,19 +1,46 @@
-EaglecraftY Proprietary License
 
-**Copyright © 2024-2025 Xojang Studios. All rights reserved.**
+EaglecraftY Proprietary License (EPL)
 
-All rights reserved. This game, including its source code and assets, is the property of Xojang Studios ZB and is protected by copyright and other intellectual property laws.
+Copyright © 2024-2025 NovaForge Studios. All Rights Reserved.
 
-Permission is granted to use, modify, and distribute this game for personal, non-commercial purposes, provided that the following conditions are met:
+This software, including its source code and assets, is the exclusive property of NovaForge Studios and is protected under international copyright and intellectual property laws.
 
-1. Redistribution: If you distribute this game or its source code, you must maintain this license file in the distribution and include the original copyright notice.
+1. License Grant
 
-2. No Commercial Use: This game may not be used for any commercial purposes without written permission from Xojang Studios ZB.
+NovaForge Studios grants you a limited, non-exclusive, non-transferable license to use this software for personal, non-commercial purposes only.
 
-3. Modification: Modifications to the game, including but not limited to source code and assets, must include a clear indication of the changes made and the date of the modification.
+2. Usage Restrictions
 
-4. Liability: The game is provided "as is," without warranty of any kind, express or implied. Xojang Studios ZB shall not be held liable for any damages or losses arising from the use of this game.
+You are NOT permitted to:
 
-By using, modifying, or distributing this game, you agree to be bound by the terms of this license. If you do not agree with these terms, you may not use, modify, or distribute this game.
+Distribute, copy, or publish the source code, binaries, or assets without written permission.
 
-For any inquiries regarding commercial use, modifications, or redistribution, please contact Xojang Studios ZB at XojangStudiozZB@mail.com.
+Use for commercial purposes without a direct license agreement from NovaForge Studios.
+
+Modify and redistribute the software outside of allowed forks on the official GitHub repository.
+
+Reverse-engineer, decompile, or disassemble any part of the software.
+
+
+3. Permitted Modifications & Forks
+
+Forking is restricted but permitted for personal use or approved contributions within the official EaglecraftY GitHub repository.
+
+If you fork, modify, or contribute, you must:
+
+Credit NovaForge Studios as the original creator.
+
+Include this license in all copies and modifications.
+
+Submit pull requests to the official repository if modifications are intended for the project.
+
+
+
+4. Liability Disclaimer
+
+This software is provided "as is," without warranty of any kind, express or implied. NovaForge Studios is not liable for any damage, data loss, or issues arising from its use.
+
+5. Enforcement & Violations
+
+Violations of this license may result in legal action. If you wish to obtain a commercial license, please contact:
+📧 NovaForgeStudios@mail.com
