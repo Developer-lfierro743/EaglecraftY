@@ -1,6 +1,8 @@
 # Project Novacraft
 
 *"A spiritual successor to sandbox legends - built* ***by players, for players."***  
+![1000176461](https://github.com/user-attachments/assets/060c37ef-d39b-44e4-afc4-ddf6c1e0c690)
+
 
 ![License](https://img.shields.io/badge/License-ECL%20(Community%20Edition)-brightgreen) 
 ![Version](https://img.shields.io/badge/Version-Pre--Alpha%200.0.1-orange) 
