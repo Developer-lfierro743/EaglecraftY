@@ -55,7 +55,7 @@ We're addressing **Minecraft's greatest failures** while honoring Notch's origin
 
 ## 🚨 Legal Transparency
 - **Not affiliated** with Mojang/Microsoft - We use **0% Minecraft code/assets**
-- **License**: NovaForge - *Free for non-commercial use*
+- **License**: NovaForge proprietary Licence (EPL)- *Free for non-commercial use*
 - **Trademark Protected**: "Novacraft" & logo are ® NovaForge Studios
 
 ---
