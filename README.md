@@ -13,7 +13,7 @@ We're addressing **Minecraft's greatest failures** while honoring Notch's origin
 - **No Corporate Chains**: 100% community-driven development
 - **Zero Fragmentation**: Unified Java/Bedrock-like codebase ([TeaVM](https://teavm.org/) powered web compatibility)
 - **Modding Freedom**: Open-source tools, no walled gardens
-- **Transparent Policies**: No predatory monetization - just a **one-time $20.99 purchase**
+- **Transparent Policies**: No predatory monetization - just a **one-time $16.99 purchase**
 
 ## 🚀 Core Features
 
